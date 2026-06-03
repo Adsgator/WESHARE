@@ -25,9 +25,11 @@
 //
 // Deve ser usado com client:load no Layout.
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ScrollAnimations() {
+  const cleanupRef = useRef<(() => void) | null>(null);
+
   useEffect(() => {
     // Importação dinâmica para evitar SSR — Lenis e GSAP são client-only
     (async () => {
@@ -53,20 +55,27 @@ export default function ScrollAnimations() {
       gsap.ticker.lagSmoothing(0);
 
       // Smooth scroll para âncoras internas
+      const anchorHandlers: Array<{ el: Element; handler: (e: Event) => void }> = [];
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", (e: Event) => {
+        const href = (anchor as HTMLAnchorElement).getAttribute("href");
+        if (!href || href === "#") return;
+        const handler = (e: Event) => {
           e.preventDefault();
-          const href = (anchor as HTMLAnchorElement).getAttribute("href");
-          const target = href ? document.querySelector<HTMLElement>(href) : null;
-          if (target) {
-            lenis.scrollTo(target, { offset: -80 });
-          }
-        });
+          const target = document.querySelector<HTMLElement>(href);
+          if (target) lenis.scrollTo(target, { offset: -80 });
+        };
+        anchor.addEventListener("click", handler);
+        anchorHandlers.push({ el: anchor, handler });
       });
 
       // Sem animações se o usuário prefere movimento reduzido
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReduced) return;
+      if (prefersReduced) {
+        return () => {
+          lenis.destroy();
+          anchorHandlers.forEach(({ el, handler }) => el.removeEventListener("click", handler));
+        };
+      }
 
       // ── [data-animate] — entra de baixo ──────────────────────
       gsap.utils.toArray<Element>("[data-animate]").forEach((el) => {
@@ -211,7 +220,19 @@ export default function ScrollAnimations() {
           },
         );
       });
-    })();
+
+      return () => {
+        lenis.destroy();
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+        anchorHandlers.forEach(({ el, handler }) => el.removeEventListener("click", handler));
+      };
+    })().then((cleanup) => {
+      if (cleanup) cleanupRef.current = cleanup;
+    });
+
+    return () => {
+      cleanupRef.current?.();
+    };
   }, []);
 
   return null;

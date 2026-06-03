@@ -6,10 +6,10 @@ const WA_URL =
   "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
 
 const navItems = [
-  { label: "Servicos", href: "#servicos" },
+  { label: "Serviços", href: "#servicos" },
   { label: "Como funciona", href: "#como-funciona" },
-  { label: "Precos", href: "#precos" },
-  { label: "Localizacao", href: "#footer" },
+  { label: "Preços", href: "#precos" },
+  { label: "Localização", href: "#localizacao" },
 ];
 ---
 
@@ -20,11 +20,11 @@ const navItems = [
 >
   <div class="container-wide">
     <div class="flex h-15 items-center justify-between gap-5">
-      <a href="/" aria-label="WeShare Escritorios Compartilhados - ir para o inicio">
-        <Image src={logoVerde} alt="WeShare Escritorios Compartilhados" class="h-9 w-auto" width={160} height={36} />
+      <a href="/" aria-label="WeShare Escritórios Compartilhados - ir para o início">
+        <Image src={logoVerde} alt="WeShare Escritórios Compartilhados" class="h-9 w-auto" width={160} height={36} />
       </a>
 
-      <nav class="hidden items-center gap-6 lg:flex" aria-label="Navegacao principal">
+      <nav class="hidden items-center gap-6 lg:flex" aria-label="Navegação principal">
         {navItems.map((item) => (
           <a
             href={item.href}
@@ -65,7 +65,7 @@ const navItems = [
   </div>
 
   <div id="mobile-menu" class="hidden border-t border-border bg-surface lg:hidden">
-    <nav class="container-wide flex flex-col gap-1 py-4" aria-label="Menu mobile">
+    <nav class="container-wide flex flex-col gap-1 py-4" aria-label="Menu móvel">
       {navItems.map((item) => (
         <a href={item.href} class="mobile-nav-link px-3 py-3 text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-text-main">
           {item.label}
