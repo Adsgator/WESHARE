@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logoVerde from "../../assets/images/logo-weshare-verde.webp";
+
 const WA_URL =
   "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
 
@@ -18,7 +21,7 @@ const navItems = [
   <div class="container-wide">
     <div class="flex h-15 items-center justify-between gap-5">
       <a href="/" aria-label="WeShare Escritorios Compartilhados - ir para o inicio">
-        <img src="/logo-weshare-verde.webp" alt="WeShare Escritorios Compartilhados" class="h-9 w-auto" width="160" height="36" />
+        <Image src={logoVerde} alt="WeShare Escritorios Compartilhados" class="h-9 w-auto" width={160} height={36} />
       </a>
 
       <nav class="hidden items-center gap-6 lg:flex" aria-label="Navegacao principal">
@@ -75,7 +78,7 @@ const navItems = [
   </div>
 </header>
 
-<div class="h-15" aria-hidden="true"></div>
+<div style="height: 3.75rem;" aria-hidden="true"></div>
 
 <style>
   .h-15 {
@@ -106,13 +109,22 @@ const navItems = [
     closeIcon?.classList.toggle("hidden", !isOpen);
   });
 
+  function closeMenu() {
+    menu?.classList.add("hidden");
+    btn?.setAttribute("aria-expanded", "false");
+    menuIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+  }
+
   document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu?.classList.add("hidden");
-      btn?.setAttribute("aria-expanded", "false");
-      menuIcon?.classList.remove("hidden");
-      closeIcon?.classList.add("hidden");
-    });
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (e) => {
+    const header = document.getElementById("site-header");
+    if (header && !header.contains(e.target as Node)) {
+      closeMenu();
+    }
   });
 
   const header = document.getElementById("site-header");
