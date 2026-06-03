@@ -10,7 +10,7 @@ const servicos = [
     descricao:
       "Documentacao liberada no mesmo dia para abertura ou transferencia de CNPJ, gestao de correspondencia inclusa e 20% de desconto nas reservas de sala.",
     destaque: "Mais contratado",
-    tone: "light-soft",
+    tone: "dark",
   },
   {
     nome: "Escritorio Privativo",
@@ -22,7 +22,13 @@ const servicos = [
     nome: "Sala de Reuniao",
     descricao:
       "Espaco para ate 7 pessoas com smart TV, flip-chart, iluminacao natural e a sobriedade certa para negociacoes importantes.",
-    tone: "dark",
+    tone: "light-soft",
+  },
+  {
+    nome: "Escritorio Compartilhado",
+    descricao:
+      "Tres estacoes de trabalho em ambiente climatizado, com cafe expresso, agua mineral, impressora colorida e Wi-Fi de qualidade, tudo incluso na reserva.",
+    tone: "light",
   },
 ];
 ---
@@ -40,7 +46,7 @@ const servicos = [
       </p>
     </div>
 
-    <div class="mt-8 grid gap-px overflow-hidden border border-border lg:grid-cols-3" data-animate-group>
+    <div class="mt-8 grid gap-px overflow-hidden border border-border lg:grid-cols-4" data-animate-group>
       {servicos.map((servico) => (
         <article
           class:list={[

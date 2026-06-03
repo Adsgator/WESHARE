@@ -6,7 +6,7 @@ const faqs = [
   },
   {
     q: "Tem prazo de fidelidade?",
-    a: "Nao. Voce pode cancelar quando quiser, com 30 dias de aviso e sem multa.",
+    a: "Nao ha prazo de fidelidade. O cancelamento pode ser feito com 30 dias de antecedencia, mediante notificacao e comprovacao da mudanca de endereco.",
   },
   {
     q: "Em quanto tempo recebo a documentacao para abrir ou transferir meu CNPJ?",
@@ -37,24 +37,81 @@ const faqs = [
     </div>
 
     <div class="mt-8 flex flex-col gap-2.5" data-animate-group>
-      {faqs.map((faq) => (
-        <details class="border border-border bg-surface px-5 py-4.5" data-animate-item>
-          <summary class="cursor-pointer list-none pr-8 text-[0.93rem] leading-6 font-semibold text-text-main">
-            {faq.q}
-          </summary>
-          <p class="mt-3 border-t border-border pt-3 text-body-md text-text-soft">{faq.a}</p>
-        </details>
+      {faqs.map((faq, i) => (
+        <div class="faq-item border border-border bg-surface" data-animate-item>
+          <button
+            type="button"
+            class="faq-trigger flex w-full items-center justify-between gap-6 px-5 py-4.5 text-left"
+            aria-expanded="false"
+            aria-controls={`faq-body-${i}`}
+            id={`faq-trigger-${i}`}
+          >
+            <span class="text-[0.93rem] font-semibold leading-6 text-text-main">{faq.q}</span>
+            <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center text-primary">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="faq-plus-v" />
+                <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </span>
+          </button>
+
+          <div
+            class="faq-body"
+            id={`faq-body-${i}`}
+            role="region"
+            aria-labelledby={`faq-trigger-${i}`}
+          >
+            <p class="px-5 pb-5 text-body-md text-text-soft">{faq.a}</p>
+          </div>
+        </div>
       ))}
     </div>
   </div>
 </section>
 
 <style>
-  summary::-webkit-details-marker {
-    display: none;
+  .faq-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  details[open] {
+  .faq-item.is-open .faq-body {
+    max-height: 20rem;
+  }
+
+  .faq-item.is-open {
     border-color: var(--t-primary);
   }
+
+  .faq-plus-v {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  .faq-item.is-open .faq-plus-v {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".faq-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const item = trigger.closest<HTMLElement>(".faq-item")!;
+      const isOpen = item.classList.contains("is-open");
+
+      // fecha todos
+      document.querySelectorAll<HTMLElement>(".faq-item.is-open").forEach((open) => {
+        open.classList.remove("is-open");
+        open.querySelector<HTMLButtonElement>(".faq-trigger")?.setAttribute("aria-expanded", "false");
+      });
+
+      // abre o clicado se estava fechado
+      if (!isOpen) {
+        item.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+</script>
