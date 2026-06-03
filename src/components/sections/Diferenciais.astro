@@ -1,0 +1,103 @@
+---
+import { Icon } from "astro-icon/components";
+
+const diferenciais = [
+  {
+    icon: "lucide:clock",
+    titulo: "Autoatendimento 24 horas por dia",
+    descricao:
+      "Acesse o espaço a qualquer hora sem depender de recepcionista ou horário de atendimento. Seu código de acesso é gerado logo após a confirmação do pagamento.",
+  },
+  {
+    icon: "lucide:shield-check",
+    titulo: "Ambiente reservado e sóbrio",
+    descricao:
+      "Sem o barulho típico de coworking cheio. Um espaço discreto, climatizado e organizado que transmite profissionalismo para quem entra pela primeira vez.",
+  },
+  {
+    icon: "lucide:map-pin",
+    titulo: "Endereço no bairro certo",
+    descricao:
+      "O Jardim Aquárius é a região mais valorizada de São José dos Campos. Sua empresa registrada aqui já comunica credibilidade antes mesmo de você abrir a boca.",
+  },
+  {
+    icon: "lucide:wallet",
+    titulo: "Tudo incluso, sem surpresa na fatura",
+    descricao:
+      "Café expresso, água mineral, impressora colorida, Wi-Fi de qualidade e ambiente climatizado. Nada cobrado à parte. O que está na reserva é o que você paga.",
+  },
+];
+---
+
+<section class="section-py bg-dark relative overflow-hidden">
+  <!-- Decoração de fundo sutil -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-5"
+      style="background: radial-gradient(circle, var(--t-primary) 0%, transparent 70%);"
+    >
+    </div>
+  </div>
+
+  <div class="container-wide relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <!-- Coluna esquerda: copy -->
+      <div>
+        <span
+          class="label-tag block mb-3 text-complement"
+          data-animate
+        >
+          Por que a WeShare
+        </span>
+        <h2
+          class="font-serif text-display-lg mb-5 text-white"
+          data-animate
+        >
+          Você não aluga uma mesa num coworking. Você usa um escritório completo.
+        </h2>
+        <p class="text-body-lg max-w-prose mb-10 text-white/70" data-animate>
+          Aqui não há filas na impressora, sala lotada nem ambiente de feira. É o espaço
+          do Renato, compartilhado com quem realmente precisa de estrutura profissional.
+        </p>
+
+        <blockquote
+          class="relative pl-5 font-serif italic text-body-lg text-white/85"
+          style="border-left: 2px solid var(--t-complement);"
+          data-animate
+        >
+          "Nosso diferencial é a exclusividade: clientes utilizam nosso espaço como se
+          dele fosse, um compartilhamento do meu próprio escritório."
+        </blockquote>
+      </div>
+
+      <!-- Coluna direita: grid de diferenciais -->
+      <div class="grid sm:grid-cols-2 gap-4" data-animate-group>
+        {
+          diferenciais.map((d) => (
+            <article
+              class="rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-300"
+              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+              data-animate-item
+            >
+              <span
+                class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(255,255,255,0.08); color: var(--t-complement);"
+                aria-hidden="true"
+              >
+                <Icon name={d.icon} class="w-5 h-5" />
+              </span>
+              <div>
+                <h3 class="font-serif text-base font-600 text-white mb-1.5">
+                  {d.titulo}
+                </h3>
+                <p class="text-body-sm text-white/60 leading-relaxed">
+                  {d.descricao}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

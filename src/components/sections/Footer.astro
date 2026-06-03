@@ -1,0 +1,154 @@
+---
+import { Icon } from "astro-icon/components";
+
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
+const EMAIL = "contato@wesharescritorios.com.br";
+const INSTAGRAM = "https://www.instagram.com/wesharescritorios";
+const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Ed.+Medison+Tower+Jardim+Aqu%C3%A1rius+S%C3%A3o+Jos%C3%A9+dos+Campos";
+
+const navItems = [
+  { label: "Serviços", href: "#servicos" },
+  { label: "Como Funciona", href: "#como-funciona" },
+  { label: "Preços", href: "#precos" },
+];
+---
+
+<footer id="footer" class="bg-dark text-white">
+  <div class="container-wide py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <!-- Marca -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="w-9 h-9 rounded-lg flex items-center justify-center bg-primary" aria-hidden="true">
+            <Icon name="lucide:building-2" class="w-5 h-5 text-white" />
+          </span>
+          <span class="font-serif font-700 text-lg">WeShare</span>
+        </div>
+        <p class="text-body-sm leading-relaxed" style="color: rgba(255,255,255,0.6);">
+          Escritórios compartilhados e endereço fiscal de prestígio no Jardim Aquárius,
+          São José dos Campos.
+        </p>
+      </div>
+
+      <!-- Navegação -->
+      <nav aria-label="Links do rodapé">
+        <h3 class="font-sans font-600 text-sm uppercase tracking-wider mb-4" style="color: rgba(255,255,255,0.5);">
+          Navegação
+        </h3>
+        <ul class="flex flex-col gap-2.5">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} class="text-body-sm link-underline" style="color: rgba(255,255,255,0.8);">
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" class="text-body-sm link-underline" style="color: rgba(255,255,255,0.8);">
+              Localização
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Contato -->
+      <div>
+        <h3 class="font-sans font-600 text-sm uppercase tracking-wider mb-4" style="color: rgba(255,255,255,0.5);">
+          Contato
+        </h3>
+        <ul class="flex flex-col gap-3 text-body-sm" style="color: rgba(255,255,255,0.8);">
+          <li class="flex items-start gap-2.5">
+            <Icon name="lucide:map-pin" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: var(--t-complement);" aria-hidden="true" />
+            <span>Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquárius, São José dos Campos, SP, CEP 12246-000</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="lucide:phone" class="w-4 h-4 flex-shrink-0" style="color: var(--t-complement);" aria-hidden="true" />
+            <a href="tel:+5512982710971" class="link-underline">(12) 98271-0971</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="lucide:mail" class="w-4 h-4 flex-shrink-0" style="color: var(--t-complement);" aria-hidden="true" />
+            <a href={`mailto:${EMAIL}`} class="link-underline break-all">{EMAIL}</a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="lucide:instagram" class="w-4 h-4 flex-shrink-0" style="color: var(--t-complement);" aria-hidden="true" />
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" class="link-underline">@wesharescritorios</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- WhatsApp + horário + tema -->
+      <div>
+        <h3 class="font-sans font-600 text-sm uppercase tracking-wider mb-4" style="color: rgba(255,255,255,0.5);">
+          Atendimento
+        </h3>
+        <p class="text-body-sm mb-4" style="color: rgba(255,255,255,0.7);">
+          Reservas pelo WhatsApp, todos os dias. Acesso ao espaço 24h por dia, 7 dias por semana.
+        </p>
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracking="click-whatsapp-footer"
+          data-section="footer"
+          class="inline-flex items-center gap-2 bg-wa text-white font-sans font-medium px-5 py-3 rounded text-sm mb-6"
+        >
+          <Icon name="lucide:message-circle" class="w-4 h-4" />
+          Fale pelo WhatsApp
+        </a>
+
+        <div>
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Alternar tema claro e escuro"
+            class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-sans"
+            style="color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.18);"
+          >
+            <Icon id="theme-icon-sun" name="lucide:sun" class="w-4 h-4 hidden" aria-hidden="true" />
+            <Icon id="theme-icon-moon" name="lucide:moon" class="w-4 h-4" aria-hidden="true" />
+            <span id="theme-label">Tema escuro</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 pt-8 flex flex-col sm:flex-row gap-4 items-center justify-between text-body-sm"
+      style="border-top: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55);"
+    >
+      <p>© 2026 WeShare Escritórios Compartilhados. Todos os direitos reservados.</p>
+      <nav class="flex gap-5" aria-label="Páginas legais">
+        <a href="/politica-de-privacidade" class="link-underline">Política de Privacidade</a>
+        <a href="/termos-de-uso" class="link-underline">Termos de Uso</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script is:inline>
+  (function () {
+    var toggle = document.getElementById('theme-toggle');
+    var sun = document.getElementById('theme-icon-sun');
+    var moon = document.getElementById('theme-icon-moon');
+    var label = document.getElementById('theme-label');
+    if (!toggle) return;
+
+    function sync() {
+      var isDark = document.documentElement.classList.contains('dark');
+      if (sun) sun.classList.toggle('hidden', !isDark);
+      if (moon) moon.classList.toggle('hidden', isDark);
+      if (label) label.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+    }
+
+    sync();
+
+    toggle.addEventListener('click', function () {
+      var isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      sync();
+    });
+  })();
+</script>

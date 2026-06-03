@@ -1,0 +1,130 @@
+---
+import { Icon } from "astro-icon/components";
+
+const GOOGLE_URL =
+  "https://www.google.com/search?q=WeShare+Escrit%C3%B3rios+Compartilhados+S%C3%A3o+Jos%C3%A9+dos+Campos";
+
+// Depoimentos ilustrativos — substituir pelos reais do Google.
+const depoimentos = [
+  {
+    texto:
+      "Atendimento rápido pelo WhatsApp e documentação do endereço fiscal resolvida no mesmo dia. Ambiente reservado e muito bem localizado.",
+    nome: "Cliente WeShare",
+  },
+  {
+    texto:
+      "Reservei a sala de reunião para receber um cliente importante. Espaço limpo, climatizado e com tudo funcionando. Passou a impressão certa.",
+    nome: "Cliente WeShare",
+  },
+  {
+    texto:
+      "Uso o escritório privativo quando preciso de foco. Acesso 24h com código próprio e nada cobrado à parte. Vale cada centavo.",
+    nome: "Cliente WeShare",
+  },
+];
+---
+
+<section class="section-py bg-background">
+  <div class="container-wide">
+    <!-- Rating hero block -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="label-tag block mb-3" data-animate>Avaliações Google</span>
+      <h2 class="font-serif text-display-lg text-text-main mb-6" data-animate>
+        Quem já usou, aprovou
+      </h2>
+
+      <!-- Bloco de rating destacado -->
+      <div
+        class="inline-flex items-center gap-6 px-8 py-5 rounded-2xl border border-border shadow-card bg-surface"
+        data-animate
+      >
+        <div class="text-left">
+          <div class="flex items-center gap-1 mb-1" aria-label="5 estrelas">
+            {
+              Array.from({ length: 5 }).map(() => (
+                <Icon
+                  name="lucide:star"
+                  class="w-5 h-5 text-secondary fill-current"
+                  aria-hidden="true"
+                />
+              ))
+            }
+          </div>
+          <p class="font-sans text-xs text-text-muted">54 avaliações verificadas</p>
+        </div>
+        <div
+          class="w-px h-10 bg-border flex-shrink-0"
+          aria-hidden="true"
+        >
+        </div>
+        <div class="text-left">
+          <p class="font-serif font-700 text-display-sm text-text-main leading-none">
+            5,0
+          </p>
+          <p class="font-sans text-xs text-text-muted mt-0.5">Google Maps</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-5 mb-8" data-animate-group>
+      {
+        depoimentos.map((d) => (
+          <figure
+            class="bg-surface rounded-2xl p-7 border border-border shadow-card card-hover flex flex-col"
+            data-animate-item
+          >
+            <!-- Aspas decorativas -->
+            <div
+              class="font-serif text-5xl text-primary/20 leading-none mb-2 -mt-2"
+              aria-hidden="true"
+            >
+              "
+            </div>
+            <blockquote class="text-body-sm text-text-soft flex-1 mb-6 leading-relaxed">
+              {d.texto}
+            </blockquote>
+            <figcaption class="flex items-center gap-3 pt-4 border-t border-border">
+              <span
+                class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-serif font-700 text-sm flex-shrink-0"
+                aria-hidden="true"
+              >
+                {d.nome.charAt(0)}
+              </span>
+              <div>
+                <p class="font-sans font-600 text-sm text-text-main">
+                  {d.nome}
+                </p>
+                <div class="flex items-center gap-0.5 mt-0.5" aria-label="5 estrelas">
+                  {Array.from({ length: 5 }).map(() => (
+                    <Icon
+                      name="lucide:star"
+                      class="w-3 h-3 text-secondary fill-current"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <p class="text-center text-body-sm text-text-muted mb-6">
+      Depoimentos ilustrativos. Veja as avaliações verificadas diretamente no Google.
+    </p>
+
+    <div class="flex justify-center" data-animate>
+      <a
+        href={GOOGLE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-ghost"
+      >
+        <Icon name="lucide:star" class="w-4 h-4" />
+        Ver avaliações no Google
+      </a>
+    </div>
+  </div>
+</section>

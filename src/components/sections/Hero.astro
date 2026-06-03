@@ -1,0 +1,206 @@
+---
+import { Icon } from "astro-icon/components";
+
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
+
+const highlights = [
+  {
+    icon: "lucide:file-check-2",
+    text: "Documentação imediata para abertura ou transferência de CNPJ",
+  },
+  {
+    icon: "lucide:mail",
+    text: "Gestão de correspondência inclusa no plano",
+  },
+  {
+    icon: "lucide:shield-check",
+    text: "Sem prazo de fidelidade e com cancelamento simples",
+  },
+];
+
+const heroSlots = [
+  {
+    label: "Foto principal",
+    title: "Recepção e lounge",
+    size: "1440 x 1080",
+    note: "Imagem de abertura com recepção, lounge e atmosfera premium.",
+    className: "lg:col-span-7 lg:row-span-2 min-h-[24rem]",
+  },
+  {
+    label: "Foto de apoio",
+    title: "Sala de reunião",
+    size: "1200 x 900",
+    note: "Tomada com mesa, vidro e vista para reforçar credibilidade.",
+    className: "lg:col-span-5 min-h-[11.25rem]",
+  },
+  {
+    label: "Foto de apoio",
+    title: "Escritório privativo",
+    size: "1200 x 900",
+    note: "Ambiente mais íntimo para mostrar privacidade e conforto.",
+    className: "lg:col-span-5 min-h-[11.25rem]",
+  },
+];
+
+const stats = [
+  { value: "R$ 119,90", label: "por mês no endereço fiscal e comercial" },
+  { value: "24h / 7", label: "acesso ao espaço com código exclusivo" },
+  { value: "5,0", label: "avaliação atual no Google" },
+];
+---
+
+<section id="hero-section" class="hero-shell section-py relative overflow-hidden" aria-label="Apresentação principal">
+  <div class="hero-orb hero-orb-left" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-right" aria-hidden="true"></div>
+
+  <div class="container-wide relative z-10">
+    <div class="grid items-center gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
+      <div>
+        <span class="eyebrow-pill mb-6">
+          <Icon name="lucide:map-pin" class="h-3.5 w-3.5 text-secondary" />
+          Jardim Aquarius · São José dos Campos
+        </span>
+
+        <h1 class="font-serif text-display-xl text-balance text-text-main mb-6" data-animate>
+          Seu CNPJ com endereço de prestígio e um escritório que sustenta a impressão certa.
+        </h1>
+
+        <p class="max-w-xl text-body-lg text-text-soft mb-8" data-animate>
+          Registre ou transfira sua empresa por <strong class="font-semibold text-text-main">R$ 119,90 por mês</strong>,
+          com documentação liberada no mesmo dia, gestão de correspondência inclusa e
+          acesso a ambientes que reforçam a credibilidade da sua marca.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10" data-animate>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tracking="click-whatsapp-hero"
+            data-section="hero"
+            class="btn-primary"
+          >
+            <Icon name="lucide:message-circle" class="h-5 w-5" />
+            Quero meu endereço fiscal agora
+          </a>
+          <a href="tel:+5512982710971" class="btn-ghost" aria-label="Ligar para (12) 98271-0971">
+            <Icon name="lucide:phone" class="h-4 w-4" />
+            (12) 98271-0971
+          </a>
+        </div>
+
+        <ul class="grid gap-3 sm:grid-cols-2" data-animate-group>
+          {highlights.map((highlight) => (
+            <li class="hero-highlight" data-animate-item>
+              <span class="hero-highlight-icon" aria-hidden="true">
+                <Icon name={highlight.icon} class="h-4 w-4" />
+              </span>
+              <span class="text-body-sm text-text-soft">{highlight.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="premium-panel hero-visual p-4 sm:p-5 lg:p-6" data-animate-scale>
+        <div class="grid gap-4 lg:grid-cols-12 lg:grid-rows-2">
+          {heroSlots.map((slot) => (
+            <article class:list={["image-slot", slot.className]}>
+              <div class="image-slot-content">
+                <div>
+                  <span class="image-slot-label mb-4">{slot.label}</span>
+                  <p class="font-serif text-display-sm text-text-main">{slot.title}</p>
+                </div>
+                <div class="space-y-2">
+                  <p class="image-slot-size">{slot.size}</p>
+                  <p class="image-slot-note">{slot.note}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="hero-stats mt-4 grid gap-3 sm:grid-cols-3">
+          {stats.map((stat) => (
+            <div class="hero-stat-card">
+              <p class="stat-number">{stat.value}</p>
+              <p class="stat-label">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-shell {
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--t-complement) 38%, transparent) 0%, transparent 34%),
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--t-background) 68%, white 32%) 0%,
+        color-mix(in srgb, var(--t-surface) 72%, var(--t-background) 28%) 48%,
+        color-mix(in srgb, var(--t-surface-alt) 76%, white 24%) 100%
+      );
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(20px);
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  .hero-orb-left {
+    width: 18rem;
+    height: 18rem;
+    top: 3rem;
+    left: -7rem;
+    background: color-mix(in srgb, var(--t-secondary) 22%, transparent);
+  }
+
+  .hero-orb-right {
+    width: 22rem;
+    height: 22rem;
+    right: -8rem;
+    bottom: 1rem;
+    background: color-mix(in srgb, var(--t-primary) 18%, transparent);
+  }
+
+  .hero-visual {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--t-surface) 94%, transparent) 0%, color-mix(in srgb, var(--t-surface-alt) 55%, var(--t-surface) 45%) 100%);
+  }
+
+  .hero-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--t-border) 88%, transparent);
+    background: color-mix(in srgb, var(--t-surface) 84%, transparent);
+    box-shadow: var(--shadow-card);
+  }
+
+  .hero-highlight-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: 0.9rem;
+    color: var(--t-primary);
+    background: color-mix(in srgb, var(--t-primary) 10%, transparent);
+  }
+
+  .hero-stat-card {
+    padding: 1.1rem 1.2rem;
+    border-radius: 1.15rem;
+    border: 1px solid color-mix(in srgb, var(--t-border) 80%, transparent);
+    background: color-mix(in srgb, var(--t-surface) 86%, transparent);
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import { Icon } from "astro-icon/components";
+
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
+
+const passos = [
+  {
+    icon: "lucide:message-circle",
+    titulo: "Fale pelo WhatsApp",
+    descricao:
+      "Escolha o serviço, tire suas dúvidas e faça a reserva direto pelo WhatsApp. Atendimento ágil e sem enrolação.",
+  },
+  {
+    icon: "lucide:check-circle",
+    titulo: "Confirme o pagamento",
+    descricao:
+      "Após a confirmação do pagamento, seu cadastro é feito na recepção do prédio e tudo fica pronto para o seu acesso.",
+  },
+  {
+    icon: "lucide:key-round",
+    titulo: "Acesse quando quiser",
+    descricao:
+      "Você recebe um código exclusivo de entrada. O espaço funciona 24 horas por dia, 7 dias por semana. Acesse e use como se fosse seu.",
+  },
+];
+---
+
+<section id="como-funciona" class="section-py bg-background">
+  <div class="container-wide">
+    <div class="max-w-2xl mb-14">
+      <span class="label-tag block mb-3" data-animate>Como funciona</span>
+      <h2 class="font-serif text-display-lg text-text-main mb-4" data-animate>
+        Do primeiro contato ao acesso, tudo pelo seu celular
+      </h2>
+      <p class="text-body-lg text-text-soft" data-animate>
+        Sem filas, sem burocracia e sem depender de horário comercial. Reserve, pague e use
+        quando quiser.
+      </p>
+    </div>
+
+    <div class="relative" data-animate-group>
+      <!-- Linha conectora desktop -->
+      <div
+        class="hidden md:block absolute top-[2.75rem] left-0 right-0 h-px"
+        style="background: linear-gradient(90deg, transparent 8%, var(--t-border) 20%, var(--t-border) 80%, transparent 92%);"
+        aria-hidden="true"
+      >
+      </div>
+
+      <ol class="grid md:grid-cols-3 gap-8 mb-14 relative">
+        {
+          passos.map((p, i) => (
+            <li class="flex flex-col" data-animate-item>
+              <!-- Número + ícone -->
+              <div class="relative flex items-center gap-4 mb-6">
+                <div class="flex-shrink-0 relative z-10">
+                  <div class="w-11 h-11 rounded-full bg-primary flex items-center justify-center shadow-card">
+                    <span class="font-serif font-700 text-white text-sm">
+                      {i + 1}
+                    </span>
+                  </div>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-primary/8 text-primary flex items-center justify-center">
+                  <Icon name={p.icon} class="w-5 h-5" />
+                </div>
+              </div>
+
+              <h3 class="font-serif text-xl font-600 text-text-main mb-2">
+                {p.titulo}
+              </h3>
+              <p class="text-body-sm text-text-soft leading-relaxed">
+                {p.descricao}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="flex justify-center" data-animate>
+      <a
+        href={WA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracking="click-whatsapp-como-funciona"
+        data-section="como-funciona"
+        class="btn-primary"
+      >
+        <Icon name="lucide:message-circle" class="w-5 h-5" />
+        Falar agora e reservar meu espaço
+      </a>
+    </div>
+  </div>
+</section>

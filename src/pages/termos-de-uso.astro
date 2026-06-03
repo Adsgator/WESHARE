@@ -2,11 +2,8 @@
 // Termos de Uso — página standalone (sem Layout principal).
 // Tem header e footer próprios para não depender de Header/Footer da biblioteca.
 //
-// TODO: substitua todos os comentários marcados com TODO pelos dados reais do cliente.
-
-// TODO: se o cliente tiver logo como asset local, use:
-// import { Image } from 'astro:assets';
-// import logoImg from '../assets/images/logo.svg';
+// PENDÊNCIA: o CNPJ do responsável não consta no briefing. Substituir
+// "[CNPJ a informar]" pelo número real antes de publicar.
 
 const currentYear = new Date().getFullYear();
 ---
@@ -18,18 +15,15 @@ const currentYear = new Date().getFullYear();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
 
-  {/* TODO: nome do cliente */}
-  <title>Termos de Uso | Nome do Cliente</title>
-  <meta name="description" content="Termos de uso do site." />
+  <title>Termos de Uso | WeShare Escritórios Compartilhados</title>
+  <meta name="description" content="Termos de uso do site da WeShare Escritórios Compartilhados." />
 
-  {/* TODO: domínio real do cliente */}
-  <link rel="canonical" href="https://seudominio.com.br/termos-de-uso" />
+  <link rel="canonical" href="https://wesharescritorios.com.br/termos-de-uso" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  {/* TODO: fontes do cliente (sincronize com tokens.css) */}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
 
   <style>
     /* Tokens do projeto — mesma fonte de verdade das demais páginas */
@@ -187,15 +181,8 @@ const currentYear = new Date().getFullYear();
 <body>
   <header>
     <header-content>
-      {/*
-        TODO: substitua por logo real do cliente.
-        Se usar astro:assets:
-          <Image src={logoImg} alt="Nome do Cliente" width={120} height={40} loading="eager" class="h-10 w-auto" />
-        Se usar arquivo em /public:
-          <img src="/logo.svg" alt="Nome do Cliente" class="h-10 w-auto" />
-      */}
       <a href="/" aria-label="Ir para o início" class="logo">
-        <img src="/favicon.svg" alt="Logo" class="h-10 w-auto" />
+        <img src="/favicon.svg" alt="WeShare Escritórios Compartilhados" class="h-10 w-auto" />
       </a>
       <a href="/" class="back">← Voltar</a>
     </header-content>
@@ -203,25 +190,18 @@ const currentYear = new Date().getFullYear();
 
   <main>
     <h1>Termos de Uso</h1>
-    {/* TODO: atualize a data conforme a publicação real */}
     <p class="updated">Última atualização: {new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}</p>
 
-    {/* TODO: substitua pelo domínio real do cliente */}
-    <p>Ao acessar o site <strong>seudominio.com.br</strong>, você concorda com os presentes Termos de Uso. Se não concordar, por favor não utilize o site.</p>
+    <p>Ao acessar o site <strong>wesharescritorios.com.br</strong>, você concorda com os presentes Termos de Uso. Se não concordar, por favor não utilize o site.</p>
 
     <h2>1. Finalidade do site</h2>
-    {/*
-      TODO: descreva o tipo de serviço do cliente.
-      Exemplo: "serviços de consultoria", "atendimento jurídico", "acompanhamento nutricional", etc.
-    */}
-    <p>Este site tem finalidade exclusivamente informativa e de captação de leads para os serviços prestados por <strong>Nome do Responsável</strong>, profissional devidamente registrado(a).</p>
+    <p>Este site tem finalidade informativa e de captação de contatos para os serviços prestados pela <strong>WeShare Escritórios Compartilhados</strong>, sob responsabilidade de Renato Rosa do Nascimento: endereço fiscal e comercial, locação de escritório privativo, sala de reunião e escritório compartilhado, no Jardim Aquárius, São José dos Campos/SP.</p>
 
-    <h2>2. Informações e conteúdo</h2>
-    {/* TODO: adapte para o tipo de conteúdo e disclaimers necessários para o nicho */}
-    <p>O conteúdo publicado neste site não substitui uma consulta presencial ou online com um profissional habilitado. Qualquer orientação específica deve ser obtida diretamente com o(a) profissional.</p>
+    <h2>2. Informações e contratação</h2>
+    <p>As informações de serviços, valores e condições apresentadas neste site têm caráter informativo e podem ser atualizadas a qualquer momento. A contratação e a reserva dos espaços são formalizadas por meio do atendimento via WhatsApp, sujeitas à disponibilidade e às condições vigentes no momento da contratação.</p>
 
     <h2>3. Propriedade intelectual</h2>
-    <p>Todos os textos, imagens, logotipos e demais elementos deste site são de propriedade de <strong>Nome do Responsável</strong> ou de terceiros que licenciaram seu uso. É proibida a reprodução sem autorização prévia e por escrito.</p>
+    <p>Todos os textos, imagens, logotipos e demais elementos deste site são de propriedade da <strong>WeShare Escritórios Compartilhados</strong> ou de terceiros que licenciaram seu uso. É proibida a reprodução sem autorização prévia e por escrito.</p>
 
     <h2>4. Links externos</h2>
     <p>Este site pode conter links para plataformas de terceiros (Instagram, WhatsApp, Google). Não nos responsabilizamos pelo conteúdo ou pelas práticas de privacidade dessas plataformas.</p>
@@ -233,11 +213,9 @@ const currentYear = new Date().getFullYear();
     <p>Estes Termos podem ser atualizados a qualquer momento. A versão vigente será sempre a disponível nesta página, com a data de atualização indicada.</p>
 
     <h2>7. Contato</h2>
-    {/* TODO: dados completos do responsável */}
-    <p>Nome do Responsável<br />CNPJ: XX.XXX.XXX/0001-XX<br />E-mail: <a href="mailto:contato@seudominio.com.br">contato@seudominio.com.br</a></p>
+    <p>Renato Rosa do Nascimento — WeShare Escritórios Compartilhados<br />CNPJ: [CNPJ a informar]<br />E-mail: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a><br />WhatsApp: (12) 98271-0971</p>
   </main>
 
-  {/* TODO: nome e CNPJ reais do cliente */}
-  <footer>© {currentYear} Nome do Responsável · CNPJ XX.XXX.XXX/0001-XX</footer>
+  <footer>© {currentYear} WeShare Escritórios Compartilhados · CNPJ [CNPJ a informar]</footer>
 </body>
 </html>

@@ -1,0 +1,215 @@
+---
+import { Icon } from "astro-icon/components";
+
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
+
+const galeria = [
+  {
+    label: "Ambiente principal",
+    titulo: "Recepção e lounge",
+    tamanho: "1600 x 1100",
+    descricao: "Boa para mostrar o padrão do espaço logo no início da página.",
+    className: "lg:col-span-7 lg:row-span-2 min-h-[24rem]",
+  },
+  {
+    label: "Reserva corporativa",
+    titulo: "Sala de reunião",
+    tamanho: "1200 x 900",
+    descricao: "Tomada horizontal com mesa, cadeiras e iluminação natural.",
+    className: "lg:col-span-5 min-h-[11.5rem]",
+  },
+  {
+    label: "Uso diário",
+    titulo: "Escritório compartilhado",
+    tamanho: "1200 x 900",
+    descricao: "Imagem para reforçar estrutura e conforto sem parecer coworking genérico.",
+    className: "lg:col-span-5 min-h-[11.5rem]",
+  },
+];
+
+const servicos = [
+  {
+    icon: "lucide:building-2",
+    nome: "Endereço Fiscal e Comercial",
+    badge: "Mais contratado",
+    destaque: true,
+    descricao:
+      "Posicione sua empresa na melhor região de São José dos Campos. Documentação liberada no mesmo dia para abertura ou transferência de CNPJ, gestão de correspondência inclusa e 20% de desconto em qualquer reserva de sala física.",
+    cta: "Contratar agora",
+  },
+  {
+    icon: "lucide:briefcase",
+    nome: "Escritório Privativo",
+    descricao:
+      "Sala planejada para atender clientes ou trabalhar sozinho com total privacidade. Ambiente climatizado, café expresso, água mineral e impressora colorida inclusos no valor da reserva.",
+    cta: "Reservar agora",
+  },
+  {
+    icon: "lucide:presentation",
+    nome: "Sala de Reunião",
+    descricao:
+      "Espaço para até 7 pessoas com smart TV, flip-chart, iluminação natural e vista da cidade. O ambiente certo para apresentações e negociações que precisam causar boa impressão.",
+    cta: "Reservar agora",
+  },
+  {
+    icon: "lucide:users",
+    nome: "Escritório Compartilhado",
+    descricao:
+      "Três estações de trabalho em ambiente climatizado. Café expresso, água mineral e impressora colorida inclusos. Para quem precisa de um espaço produtivo sem o custo de um escritório fixo.",
+    cta: "Reservar agora",
+  },
+];
+---
+
+<section id="servicos" class="section-py bg-surface">
+  <div class="container-wide">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end mb-14">
+      <div class="max-w-2xl">
+        <span class="label-tag block mb-3" data-animate>Nossos serviços</span>
+        <h2 class="font-serif text-display-lg text-text-main mb-4" data-animate>
+          O espaço certo para cada momento do seu negócio
+        </h2>
+        <p class="text-body-lg text-text-soft mb-6" data-animate>
+          A página já vende bem a proposta. O que faltava era mostrar melhor os ambientes.
+          Por isso deixei slots com proporções definidas para você substituir por fotos reais
+          sem precisar remontar o layout depois.
+        </p>
+
+        <div class="premium-panel servicos-note p-6" data-animate>
+          <span class="eyebrow-pill mb-4">Uploads sugeridos</span>
+          <ul class="grid gap-3 text-body-sm text-text-soft sm:grid-cols-2">
+            <li class="flex items-start gap-3">
+              <Icon name="lucide:file-check-2" class="mt-0.5 h-4 w-4 text-primary" />
+              Prefira fotos horizontais, com boa profundidade e luz natural.
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="lucide:shield-check" class="mt-0.5 h-4 w-4 text-primary" />
+              Mantenha enquadramentos limpos para preservar o aspecto premium.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="premium-panel p-4 sm:p-5 lg:p-6" data-animate-scale>
+        <div class="grid gap-4 lg:grid-cols-12 lg:grid-rows-2">
+          {galeria.map((item) => (
+            <article class:list={["image-slot", item.className]}>
+              <div class="image-slot-content">
+                <div>
+                  <span class="image-slot-label mb-4">{item.label}</span>
+                  <p class="font-serif text-display-sm text-text-main">{item.titulo}</p>
+                </div>
+                <div class="space-y-2">
+                  <p class="image-slot-size">{item.tamanho}</p>
+                  <p class="image-slot-note">{item.descricao}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4" data-animate-group>
+      {servicos.map((servico) => (
+        <article
+          class:list={[
+            "servico-card rounded-[1.5rem] border p-7 shadow-card card-hover",
+            servico.destaque ? "servico-card-featured" : "bg-background border-border",
+          ]}
+          data-animate-item
+        >
+          <div class="flex items-start justify-between gap-4 mb-6">
+            <span class:list={["servico-icon", servico.destaque ? "servico-icon-featured" : ""]} aria-hidden="true">
+              <Icon name={servico.icon} class="h-5 w-5" />
+            </span>
+
+            {servico.badge && (
+              <span class={servico.destaque ? "badge-servico badge-servico-featured" : "badge-servico"}>
+                {servico.badge}
+              </span>
+            )}
+          </div>
+
+          <h3 class:list={["font-serif text-display-sm mb-3", servico.destaque ? "text-white" : "text-text-main"]}>
+            {servico.nome}
+          </h3>
+
+          <p class:list={["text-body-sm leading-relaxed mb-6 flex-1", servico.destaque ? "text-white/78" : "text-text-soft"]}>
+            {servico.descricao}
+          </p>
+
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tracking="click-whatsapp-servico"
+            data-section={servico.nome}
+            class:list={[
+              "inline-flex items-center gap-2 text-sm font-semibold",
+              servico.destaque ? "text-white hover:text-white/84" : "text-primary link-underline",
+            ]}
+          >
+            {servico.cta}
+            <Icon name="lucide:arrow-right" class="h-4 w-4" />
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicos-note {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--t-surface) 92%, transparent) 0%, color-mix(in srgb, var(--t-surface-alt) 44%, var(--t-surface) 56%) 100%);
+  }
+
+  .servico-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--t-background);
+  }
+
+  .servico-card-featured {
+    border-color: color-mix(in srgb, var(--t-primary) 28%, transparent);
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--t-complement) 14%, transparent) 0%, transparent 28%),
+      linear-gradient(180deg, var(--t-primary) 0%, color-mix(in srgb, var(--t-primary-dark) 88%, black 12%) 100%);
+  }
+
+  .servico-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    color: var(--t-primary);
+    background: color-mix(in srgb, var(--t-primary) 10%, transparent);
+  }
+
+  .servico-icon-featured {
+    color: var(--t-surface);
+    background: color-mix(in srgb, white 16%, transparent);
+  }
+
+  .badge-servico {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--t-primary);
+    background: color-mix(in srgb, var(--t-primary) 10%, transparent);
+  }
+
+  .badge-servico-featured {
+    color: var(--t-surface);
+    background: color-mix(in srgb, white 16%, transparent);
+  }
+</style>

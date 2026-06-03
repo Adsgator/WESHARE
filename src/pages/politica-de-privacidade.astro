@@ -3,11 +3,8 @@
 // Tem header e footer próprios para não depender de Header/Footer da biblioteca.
 // Adequada à LGPD (Lei nº 13.709/2018).
 //
-// TODO: substitua todos os comentários marcados com TODO pelos dados reais do cliente.
-
-// TODO: se o cliente tiver logo como asset local, use:
-// import { Image } from 'astro:assets';
-// import logoImg from '../assets/images/logo.svg';
+// PENDÊNCIA: o CNPJ do responsável não consta no briefing. Substituir
+// "[CNPJ a informar]" pelo número real antes de publicar.
 
 const currentYear = new Date().getFullYear();
 ---
@@ -19,18 +16,15 @@ const currentYear = new Date().getFullYear();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
 
-  {/* TODO: nome do cliente */}
-  <title>Política de Privacidade | Nome do Cliente</title>
-  <meta name="description" content="Política de privacidade do site." />
+  <title>Política de Privacidade | WeShare Escritórios Compartilhados</title>
+  <meta name="description" content="Política de privacidade do site da WeShare Escritórios Compartilhados." />
 
-  {/* TODO: domínio real do cliente */}
-  <link rel="canonical" href="https://seudominio.com.br/politica-de-privacidade" />
+  <link rel="canonical" href="https://wesharescritorios.com.br/politica-de-privacidade" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  {/* TODO: fontes do cliente (sincronize com tokens.css) */}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
 
   <style>
     /* Tokens do projeto — mesma fonte de verdade das demais páginas */
@@ -188,15 +182,8 @@ const currentYear = new Date().getFullYear();
 <body>
   <header>
     <header-content>
-      {/*
-        TODO: substitua por logo real do cliente.
-        Se usar astro:assets:
-          <Image src={logoImg} alt="Nome do Cliente" width={120} height={40} loading="eager" class="h-10 w-auto" />
-        Se usar arquivo em /public:
-          <img src="/logo.svg" alt="Nome do Cliente" class="h-10 w-auto" />
-      */}
       <a href="/" aria-label="Ir para o início" class="logo">
-        <img src="/favicon.svg" alt="Logo" class="h-10 w-auto" />
+        <img src="/favicon.svg" alt="WeShare Escritórios Compartilhados" class="h-10 w-auto" />
       </a>
       <a href="/" class="back">← Voltar</a>
     </header-content>
@@ -207,16 +194,7 @@ const currentYear = new Date().getFullYear();
     {/* TODO: atualize a data conforme a publicação real */}
     <p class="updated">Última atualização: {new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}</p>
 
-    {/*
-      TODO: substitua os dados do responsável abaixo:
-        - Nome completo / Razão Social
-        - CNPJ ou CPF (se PF)
-        - Domínio do site
-        - E-mail de contato
-        - Telefone / WhatsApp
-    */}
-
-    <p>Esta Política de Privacidade descreve como <strong>Nome do Responsável</strong> (CNPJ XX.XXX.XXX/0001-XX), responsável pelo site <strong>seudominio.com.br</strong>, coleta, usa e protege as informações dos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
+    <p>Esta Política de Privacidade descreve como <strong>Renato Rosa do Nascimento</strong> (WeShare Escritórios Compartilhados — CNPJ [CNPJ a informar]), responsável pelo site <strong>wesharescritorios.com.br</strong>, coleta, usa e protege as informações dos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
 
     <h2>1. Dados coletados</h2>
     <p>Coletamos os seguintes dados ao navegar neste site:</p>
@@ -244,8 +222,7 @@ const currentYear = new Date().getFullYear();
     <p>Seus dados podem ser compartilhados com:</p>
     <ul>
       <li>Google LLC (Analytics e Ads), conforme os termos de uso destes serviços.</li>
-      {/* TODO: adicione o provedor de hospedagem real (ex: Vercel, Netlify, etc.) */}
-      <li>Provedor de hospedagem (infraestrutura do site).</li>
+      <li>Provedor de hospedagem responsável pela infraestrutura do site.</li>
     </ul>
     <p>Não vendemos nem cedemos seus dados a terceiros para fins comerciais.</p>
 
@@ -257,18 +234,15 @@ const currentYear = new Date().getFullYear();
       <li>Revogar o consentimento a qualquer momento.</li>
       <li>Solicitar a portabilidade dos dados.</li>
     </ul>
-    {/* TODO: e-mail real do cliente */}
-    <p>Para exercer seus direitos, entre em contato: <a href="mailto:contato@seudominio.com.br">contato@seudominio.com.br</a></p>
+    <p>Para exercer seus direitos, entre em contato: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a></p>
 
     <h2>7. Segurança</h2>
     <p>Adotamos medidas técnicas e administrativas adequadas para proteger seus dados pessoais contra acesso não autorizado, perda ou destruição.</p>
 
     <h2>8. Contato</h2>
-    {/* TODO: dados completos do responsável */}
-    <p>Nome do Responsável<br />CNPJ: XX.XXX.XXX/0001-XX<br />E-mail: <a href="mailto:contato@seudominio.com.br">contato@seudominio.com.br</a><br />WhatsApp: (XX) XXXXX-XXXX</p>
+    <p>Renato Rosa do Nascimento — WeShare Escritórios Compartilhados<br />CNPJ: [CNPJ a informar]<br />Endereço: Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquárius, São José dos Campos/SP, CEP 12246-000<br />E-mail: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a><br />WhatsApp: (12) 98271-0971</p>
   </main>
 
-  {/* TODO: nome e CNPJ reais do cliente */}
-  <footer>© {currentYear} Nome do Responsável · CNPJ XX.XXX.XXX/0001-XX</footer>
+  <footer>© {currentYear} WeShare Escritórios Compartilhados · CNPJ [CNPJ a informar]</footer>
 </body>
 </html>

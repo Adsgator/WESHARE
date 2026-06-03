@@ -9,8 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  // TODO: substitua pelo domínio real do cliente (usado pelo sitemap e canonical)
-  site: 'https://seudominio.com.br',
+  site: 'https://wesharescritorios.com.br',
   integrations: [
     react(),
     sitemap(),

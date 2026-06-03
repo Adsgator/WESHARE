@@ -10,26 +10,34 @@
 //
 // TODO: importe Header, Footer e as seções da biblioteca Astroteca conforme o projeto.
 
-import BaseLayout from '../layouts/BaseLayout.astro';
-
-// TODO: descomente e ajuste conforme os componentes disponíveis
-// import Header from '../components/sections/Header.astro';
-// import Hero from '../components/sections/Hero.astro';
-// import Footer from '../components/sections/Footer.astro';
+import Avaliacoes from "../components/sections/Avaliacoes.astro";
+import ComoFunciona from "../components/sections/ComoFunciona.astro";
+import CtaFinal from "../components/sections/CtaFinal.astro";
+import Diferenciais from "../components/sections/Diferenciais.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import Footer from "../components/sections/Footer.astro";
+import Header from "../components/sections/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Precos from "../components/sections/Precos.astro";
+import Servicos from "../components/sections/Servicos.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  {/* TODO: adicione Header vindo da biblioteca Astroteca */}
-  {/* <Header /> */}
+  <Header />
 
   <main id="main-content" tabindex="-1">
-    {/* TODO: adicione as seções da página aqui.
-        O Hero deve ter id="hero-section" para o botão WhatsApp funcionar. */}
-    {/* <Hero /> */}
+    <Hero />
+    <Servicos />
+    <ComoFunciona />
+    <Diferenciais />
+    <Precos />
+    <FAQ />
+    <Avaliacoes />
+    <CtaFinal />
   </main>
 
-  {/* TODO: adicione Footer vindo da biblioteca Astroteca (id="footer") */}
-  {/* <Footer /> */}
+  <Footer />
 </BaseLayout>
 
 <script is:inline>

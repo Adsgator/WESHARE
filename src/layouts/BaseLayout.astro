@@ -7,12 +7,12 @@
 // Inclui: anti-flash dark mode, GTM, Consent Mode v2, SEO/OG, fontes,
 // SkipLink, WhatsAppFloat, CookieBanner, ScrollAnimations.
 
-import GTM from '../components/global/GTM.astro';
-import SkipLink from '../components/global/SkipLink.astro';
-import WhatsAppFloat from '../components/global/WhatsAppFloat.astro';
-import CookieBanner from '../components/islands/CookieBanner.tsx';
-import ScrollAnimations from '../components/islands/ScrollAnimations.tsx';
-import '../styles/global.css';
+import GTM from "../components/global/GTM.astro";
+import SkipLink from "../components/global/SkipLink.astro";
+import WhatsAppFloat from "../components/global/WhatsAppFloat.astro";
+import CookieBanner from "../components/islands/CookieBanner.tsx";
+import ScrollAnimations from "../components/islands/ScrollAnimations.tsx";
+import "../styles/global.css";
 
 interface Props {
   title?: string;
@@ -25,35 +25,56 @@ interface Props {
   schema?: object;
 }
 
+const SITE_URL = "https://wesharescritorios.com.br";
+
 const {
-  // TODO: substitua os defaults pelos dados reais do cliente
-  title = 'Nome do Cliente | Cidade',
-  description = 'Descrição padrão do cliente para SEO. Substitua aqui.',
-  keywords = 'palavra-chave 1, palavra-chave 2, palavra-chave 3',
-  ogTitle = 'Nome do Cliente | Cidade',
-  ogDescription = 'Descrição curta para Open Graph. Substitua aqui.',
-  canonical = 'https://seudominio.com.br', // TODO: domínio real
+  title = "WeShare Escritórios Compartilhados | Endereço Fiscal e Coworking no Jardim Aquárius — SJC",
+  description = "Endereço fiscal e comercial de prestígio no Jardim Aquárius, São José dos Campos, por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade. Escritórios privativos e salas de reunião para reservar pelo WhatsApp.",
+  keywords = "endereço fiscal São José dos Campos, escritório compartilhado, coworking Jardim Aquárius, sala de reunião SJC, escritório privativo, endereço comercial CNPJ",
+  ogTitle = "WeShare Escritórios Compartilhados | Jardim Aquárius — São José dos Campos",
+  ogDescription = "Seu CNPJ com endereço de prestígio por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade e com gestão de correspondência inclusa.",
+  canonical = SITE_URL,
   noindex = false,
   schema,
 } = Astro.props;
 
-// TODO: substitua pelo ID real do GTM do cliente (ou deixe vazio para não injetar)
-const GTM_ID = import.meta.env.PUBLIC_GTM_ID || '';
+// ID do GTM (vem do .env; vazio = não injeta)
+const GTM_ID = import.meta.env.PUBLIC_GTM_ID || "";
 
-// Tema inicial do site. TODO: ajuste para 'dark' se o cliente pediu dark por padrão.
-const DEFAULT_THEME = 'light';
+// Tema inicial do site.
+const DEFAULT_THEME = "light";
 
-// TODO: ajuste o @type e os dados para o tipo de negócio do cliente.
 const defaultSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Nome do Cliente',
-  description: 'Descrição do negócio para schema.org.',
-  url: 'https://seudominio.com.br',
-  telephone: '+55-11-99999-9999',
-  email: 'contato@seudominio.com.br',
-  openingHours: ['Mo-Fr 09:00-18:00'],
-  sameAs: [],
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "WeShare Escritórios Compartilhados",
+  description:
+    "Endereço fiscal e comercial, escritórios privativos, salas de reunião e estações compartilhadas no Jardim Aquárius, São José dos Campos.",
+  url: SITE_URL,
+  telephone: "+55-12-98271-0971",
+  email: "contato@wesharescritorios.com.br",
+  priceRange: "R$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquárius",
+    addressLocality: "São José dos Campos",
+    addressRegion: "SP",
+    postalCode: "12246-000",
+    addressCountry: "BR",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "00:00",
+    closes: "23:59",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: "54",
+  },
+  sameAs: ["https://www.instagram.com/wesharescritorios"],
 };
 
 const finalSchema = schema || defaultSchema;
@@ -80,8 +101,7 @@ const finalSchema = schema || defaultSchema;
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- TODO: substitua pela cor primária do cliente -->
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#1F4637" />
 
   <!-- SEO -->
   <title>{title}</title>
@@ -95,39 +115,37 @@ const finalSchema = schema || defaultSchema;
   <meta property="og:title" content={ogTitle} />
   <meta property="og:description" content={ogDescription} />
   <meta property="og:url" content={canonical} />
-  <!-- TODO: adicione a imagem OG real em /public/og-image.webp -->
-  <meta property="og:image" content="https://seudominio.com.br/og-image.webp" />
+  <meta property="og:image" content={`${SITE_URL}/og-image.webp`} />
   <meta property="og:locale" content="pt_BR" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle} />
   <meta name="twitter:description" content={ogDescription} />
-  <meta name="twitter:image" content="https://seudominio.com.br/og-image.webp" />
+  <meta name="twitter:image" content={`${SITE_URL}/og-image.webp`} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Fonte serifada do projeto.
-       TODO: substitua a URL e a família pela fonte do cliente (sincronize com --t-font-serif em tokens.css).
-       A fonte sans (DM Sans) é carregada via @fontsource no global.css. -->
+  <!-- Fontes do projeto: Cormorant Garamond (títulos) + Manrope (corpo).
+       Sincronizadas com --t-font-serif / --t-font-sans em tokens.css. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
     as="style"
     onload="this.onload=null;this.rel='stylesheet'"
   />
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </noscript>
 
   <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 
   <!-- Google Consent Mode v2 — antes do GTM -->
   <script is:inline>

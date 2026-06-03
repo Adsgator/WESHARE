@@ -13,40 +13,40 @@
 
 :root {
   /* ── Marca ──────────────────────────────────────────── */
-  --t-primary:       #436f3e; /* botões, links, destaques */
-  --t-primary-dark:  #2f5129; /* hover de botões, variantes escuras */
-  --t-secondary:     #d59740; /* acentos, badges, CTA dourado */
-  --t-complement:    #f9f395; /* detalhes decorativos */
+  --t-primary: #1f4637; /* botões, links, destaques */
+  --t-primary-dark: #152d24; /* hover de botões, variantes escuras */
+  --t-secondary: #b08b57; /* acentos, badges */
+  --t-complement: #c7d6c2; /* detalhes decorativos (verde claro) */
 
   /* ── Superfícies ────────────────────────────────────── */
-  --t-background:    #ffffff;
-  --t-surface:       #f7f4f0;
-  --t-surface-alt:   #f0ebe3;
-  --t-dark:          #1d1d1c; /* footer, blocos escuros */
-  --t-border:        #e5dfd6;
+  --t-background: #f5f1e8;
+  --t-surface: #fffdf9;
+  --t-surface-alt: #ece3d3;
+  --t-dark: #18211d; /* footer, blocos escuros */
+  --t-border: #d8cdba;
 
   /* ── Texto ──────────────────────────────────────────── */
-  --t-text-main:     #1d1d1c; /* corpo */
-  --t-text-soft:     #535353; /* subtítulos, labels */
-  --t-text-muted:    #8a8a8a; /* metadados, placeholders */
+  --t-text-main: #1f2520; /* corpo */
+  --t-text-soft: #516056; /* subtítulos, labels */
+  --t-text-muted: #7c837d; /* metadados, placeholders */
 
   /* ── Utilitárias ────────────────────────────────────── */
-  --t-wa:            #25d366; /* verde WhatsApp */
+  --t-wa: #25d366; /* verde WhatsApp */
 
   /* ── Tipografia ─────────────────────────────────────── */
-  --t-font-serif:    "Cormorant Garamond", Georgia, ui-serif, serif;
-  --t-font-sans:     "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --t-font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --t-font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ── Dark mode ──────────────────────────────────────────
    Substitua estes valores pela paleta dark do cliente. */
 .dark {
-  --t-background:    #0f0f0f;
-  --t-surface:       #1a1a1a;
-  --t-surface-alt:   #242424;
-  --t-dark:          #0a0a0a;
-  --t-border:        #2a2a2a;
-  --t-text-main:     #e8e8e8;
-  --t-text-soft:     #b0b0b0;
-  --t-text-muted:    #707070;
+  --t-background: #101714;
+  --t-surface: #17201c;
+  --t-surface-alt: #1f2b26;
+  --t-dark: #0b100e;
+  --t-border: #2d3b34;
+  --t-text-main: #edf1ec;
+  --t-text-soft: #b5c0b7;
+  --t-text-muted: #7f8c82;
 }

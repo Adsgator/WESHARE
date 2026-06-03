@@ -6,7 +6,9 @@
     "rules": {
       "recommended": true,
       "suspicious": { "noExplicitAny": "error" },
-      "style": { "noNonNullAssertion": "warn" }
+      "style": { "noNonNullAssertion": "warn" },
+      "complexity": { "noForEach": "off" },
+      "a11y": { "useSemanticElements": "off" }
     }
   },
   "formatter": {

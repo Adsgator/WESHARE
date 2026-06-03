@@ -1,0 +1,125 @@
+---
+import { Icon } from "astro-icon/components";
+
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
+
+const itens = [
+  "Endereço comercial no Jardim Aquárius, São José dos Campos",
+  "Documentação imediata para abertura ou transferência de CNPJ",
+  "Gestão de correspondência inclusa",
+  "20% de desconto em reservas de sala física",
+  "Rescisão com 30 dias de aviso. Sem multa.",
+];
+
+const garantias = [
+  { icon: "lucide:shield-check", texto: "Sem multa de rescisão" },
+  { icon: "lucide:file-check-2", texto: "Doc. no mesmo dia" },
+  { icon: "lucide:star", texto: "5,0 no Google" },
+];
+---
+
+<section id="precos" class="section-py bg-surface">
+  <div class="container-wide">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="label-tag block mb-3" data-animate>Preços</span>
+      <h2 class="font-serif text-display-lg text-text-main mb-4" data-animate>
+        Um endereço de prestígio por menos do que você imagina
+      </h2>
+      <p class="text-body-lg text-text-soft" data-animate>
+        Sem taxa de adesão, sem prazo de fidelidade e com tudo que você precisa para manter
+        seu CNPJ em ordem.
+      </p>
+    </div>
+
+    <div class="max-w-xl mx-auto" data-animate-scale>
+      <!-- Garantias acima do card -->
+      <div class="flex justify-center gap-6 mb-6 flex-wrap">
+        {
+          garantias.map((g) => (
+            <div class="flex items-center gap-2 text-text-soft">
+              <Icon
+                name={g.icon}
+                class="w-4 h-4 text-primary"
+                aria-hidden="true"
+              />
+              <span class="font-sans text-sm">{g.texto}</span>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Card principal -->
+      <div
+        class="rounded-2xl overflow-hidden shadow-float"
+        style="border: 2px solid var(--t-primary);"
+      >
+        <!-- Header do card -->
+        <div class="bg-primary text-white px-8 py-7 text-center relative overflow-hidden">
+          <div
+            class="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
+            <div
+              class="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-10"
+              style="background: radial-gradient(circle, white 0%, transparent 70%);"
+            >
+            </div>
+          </div>
+          <p
+            class="font-sans font-600 text-sm uppercase tracking-widest opacity-80 mb-3"
+          >
+            Endereço Fiscal e Comercial
+          </p>
+          <div class="flex items-end justify-center gap-1">
+            <span class="font-serif font-700 text-display-md leading-none"
+              >R$ 119,90</span
+            >
+            <span class="font-sans text-sm opacity-70 mb-1">/ mês</span>
+          </div>
+          <p class="font-sans text-xs opacity-60 mt-2">
+            Sem taxa de adesão · Cancele quando quiser
+          </p>
+        </div>
+
+        <!-- Body do card -->
+        <div class="bg-surface px-8 py-8">
+          <ul class="flex flex-col gap-4 mb-8">
+            {
+              itens.map((item) => (
+                <li class="flex items-start gap-3">
+                  <Icon
+                    name="lucide:check-circle-2"
+                    class="w-5 h-5 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span class="text-body-sm text-text-soft">{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tracking="click-whatsapp-precos"
+            data-section="precos"
+            class="btn-primary w-full justify-center"
+          >
+            <Icon name="lucide:message-circle" class="w-5 h-5" />
+            Contratar agora pelo WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <p class="text-center text-body-sm text-text-muted mt-5">
+        Valores das reservas de sala disponíveis em
+        <a
+          href="https://wesharescritorios.com.br"
+          class="text-primary link-underline">wesharescritorios.com.br</a
+        >
+      </p>
+    </div>
+  </div>
+</section>
