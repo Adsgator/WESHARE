@@ -1,247 +1,148 @@
 ---
-// Política de Privacidade — página standalone (sem Layout principal).
-// Tem header e footer próprios para não depender de Header/Footer da biblioteca.
-// Adequada à LGPD (Lei nº 13.709/2018).
-//
-// PENDÊNCIA: o CNPJ do responsável não consta no briefing. Substituir
-// "[CNPJ a informar]" pelo número real antes de publicar.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/sections/Header.astro";
+import Footer from "../components/sections/Footer.astro";
 
 const currentYear = new Date().getFullYear();
 ---
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, follow" />
+<BaseLayout
+  title="Política de Privacidade | WeShare Escritórios Compartilhados"
+  description="Política de privacidade do site da WeShare Escritórios Compartilhados."
+  noindex={true}
+  canonical="https://wesharescritorios.com.br/politica-de-privacidade"
+>
+  <Header />
 
-  <title>Política de Privacidade | WeShare Escritórios Compartilhados</title>
-  <meta name="description" content="Política de privacidade do site da WeShare Escritórios Compartilhados." />
+  <main id="main-content" class="legal-page">
+    <div class="legal-container">
+      <h1>Política de Privacidade</h1>
+      <p class="updated">Última atualização: {new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}</p>
 
-  <link rel="canonical" href="https://wesharescritorios.com.br/politica-de-privacidade" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <p>Esta Política de Privacidade descreve como <strong>Renato Rosa do Nascimento</strong> (WeShare Escritórios Compartilhados — CNPJ 46.114.100/0001-40), responsável pelo site <strong>wesharescritorios.com.br</strong>, coleta, usa e protege as informações dos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+      <h2>1. Dados coletados</h2>
+      <p>Coletamos os seguintes dados ao navegar neste site:</p>
+      <ul>
+        <li>Dados de navegação (páginas acessadas, tempo de visita, dispositivo) via Google Analytics, quando o usuário consente.</li>
+        <li>Dados fornecidos voluntariamente ao clicar em links de contato (WhatsApp), que são processados diretamente pelo WhatsApp.</li>
+      </ul>
+      <p>Não coletamos dados sensíveis como CPF, dados bancários ou informações de saúde diretamente por este site.</p>
 
-  <style>
-    /* Tokens do projeto — mesma fonte de verdade das demais páginas */
-    @import '../styles/tokens.css';
+      <h2>2. Finalidade do uso</h2>
+      <ul>
+        <li>Melhorar a experiência de navegação com base em dados agregados de acesso.</li>
+        <li>Mensurar o desempenho de campanhas de marketing digital (Google Ads).</li>
+        <li>Responder a dúvidas e solicitações de contato enviadas voluntariamente.</li>
+      </ul>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: var(--t-font-sans);
-      font-weight: 300;
-      background: var(--t-surface);
-      color: var(--t-text-main);
-      -webkit-font-smoothing: antialiased;
-      padding-top: 88px;
-    }
+      <h2>3. Base legal</h2>
+      <p>O tratamento dos dados é baseado no consentimento do usuário (Art. 7º, I da LGPD), que pode ser retirado a qualquer momento por meio do nosso aviso de cookies ou pelo contato informado abaixo.</p>
 
-    /* ── Header ──────────────────────────────────── */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      background: var(--t-background);
-      border-bottom: 1px solid var(--t-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      <h2>4. Cookies</h2>
+      <p>Utilizamos cookies de análise e publicidade (Google Analytics e Google Ads), ativados apenas após o consentimento expresso do usuário. Cookies estritamente necessários para o funcionamento do site são sempre ativos.</p>
+      <p>Para gerenciar suas preferências de cookies, utilize o banner exibido na primeira visita.</p>
 
-    header-content {
-      max-width: 1280px;
-      width: 100%;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-    }
+      <h2>5. Compartilhamento de dados</h2>
+      <p>Seus dados podem ser compartilhados com:</p>
+      <ul>
+        <li>Google LLC (Analytics e Ads), conforme os termos de uso destes serviços.</li>
+        <li>Provedor de hospedagem responsável pela infraestrutura do site.</li>
+      </ul>
+      <p>Não vendemos nem cedemos seus dados a terceiros para fins comerciais.</p>
 
-    header .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
+      <h2>6. Seus direitos</h2>
+      <p>De acordo com a LGPD, você tem direito a:</p>
+      <ul>
+        <li>Confirmar a existência de tratamento de seus dados.</li>
+        <li>Acessar, corrigir ou solicitar a exclusão dos seus dados.</li>
+        <li>Revogar o consentimento a qualquer momento.</li>
+        <li>Solicitar a portabilidade dos dados.</li>
+      </ul>
+      <p>Para exercer seus direitos, entre em contato: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a></p>
 
-    header .logo:focus-visible {
-      outline: 2px solid var(--t-primary);
-      outline-offset: 4px;
-    }
+      <h2>7. Segurança</h2>
+      <p>Adotamos medidas técnicas e administrativas adequadas para proteger seus dados pessoais contra acesso não autorizado, perda ou destruição.</p>
 
-    header .logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
-
-    header .back {
-      font-size: 0.82rem;
-      color: var(--t-text-soft);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s ease;
-    }
-
-    header .back:hover { color: var(--t-primary); }
-    header .back:focus-visible { outline: 2px solid var(--t-primary); outline-offset: 2px; }
-
-    /* ── Main ────────────────────────────────────── */
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 80px 24px 80px;
-      width: 100%;
-    }
-
-    /* ── Tipografia ──────────────────────────────── */
-    h1 {
-      font-family: var(--t-font-serif);
-      font-size: 2.2rem;
-      font-weight: 400;
-      color: var(--t-text-main);
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .updated {
-      font-size: 0.8rem;
-      color: var(--t-text-muted);
-      margin-bottom: 48px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 500;
-    }
-
-    h2 {
-      font-family: var(--t-font-serif);
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: var(--t-primary);
-      margin-top: 44px;
-      margin-bottom: 16px;
-      letter-spacing: -0.005em;
-    }
-
-    p, li {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--t-text-soft);
-      margin-bottom: 14px;
-    }
-
-    ul { padding-left: 24px; margin-bottom: 16px; }
-    li { margin-bottom: 8px; }
-
-    a {
-      color: var(--t-primary);
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-      border-bottom: 1px solid color-mix(in srgb, var(--t-primary) 35%, transparent);
-    }
-
-    a:hover { opacity: 0.75; border-bottom-color: var(--t-primary); }
-    a:focus-visible { outline: 2px solid var(--t-primary); outline-offset: 2px; }
-    strong { font-weight: 500; color: var(--t-text-main); }
-
-    /* ── Footer ──────────────────────────────────── */
-    footer {
-      text-align: center;
-      padding: 32px 24px;
-      border-top: 1px solid var(--t-border);
-      font-size: 0.75rem;
-      color: var(--t-text-muted);
-      background: var(--t-background);
-      line-height: 1.6;
-      margin-top: 60px;
-    }
-
-    /* ── Responsive ──────────────────────────────── */
-    @media (max-width: 640px) {
-      body { padding-top: 72px; }
-      header-content { padding: 10px 16px; }
-      header .logo img { height: 32px; }
-      h1 { font-size: 1.8rem; }
-      h2 { font-size: 1.15rem; }
-      p, li { font-size: 15px; }
-      main { padding: 60px 16px 60px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      a { transition: none; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <header-content>
-      <a href="/" aria-label="Ir para o início" class="logo">
-        <img src="/favicon.svg" alt="WeShare Escritórios Compartilhados" class="h-10 w-auto" />
-      </a>
-      <a href="/" class="back">← Voltar</a>
-    </header-content>
-  </header>
-
-  <main>
-    <h1>Política de Privacidade</h1>
-    <p class="updated">Última atualização: {new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}</p>
-
-    <p>Esta Política de Privacidade descreve como <strong>Renato Rosa do Nascimento</strong> (WeShare Escritórios Compartilhados — CNPJ 46.114.100/0001-40), responsável pelo site <strong>wesharescritorios.com.br</strong>, coleta, usa e protege as informações dos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
-
-    <h2>1. Dados coletados</h2>
-    <p>Coletamos os seguintes dados ao navegar neste site:</p>
-    <ul>
-      <li>Dados de navegação (páginas acessadas, tempo de visita, dispositivo) via Google Analytics, quando o usuário consente.</li>
-      <li>Dados fornecidos voluntariamente ao clicar em links de contato (WhatsApp), que são processados diretamente pelo WhatsApp.</li>
-    </ul>
-    <p>Não coletamos dados sensíveis como CPF, dados bancários ou informações de saúde diretamente por este site.</p>
-
-    <h2>2. Finalidade do uso</h2>
-    <ul>
-      <li>Melhorar a experiência de navegação com base em dados agregados de acesso.</li>
-      <li>Mensurar o desempenho de campanhas de marketing digital (Google Ads).</li>
-      <li>Responder a dúvidas e solicitações de contato enviadas voluntariamente.</li>
-    </ul>
-
-    <h2>3. Base legal</h2>
-    <p>O tratamento dos dados é baseado no consentimento do usuário (Art. 7º, I da LGPD), que pode ser retirado a qualquer momento por meio do nosso aviso de cookies ou pelo contato informado abaixo.</p>
-
-    <h2>4. Cookies</h2>
-    <p>Utilizamos cookies de análise e publicidade (Google Analytics e Google Ads), ativados apenas após o consentimento expresso do usuário. Cookies estritamente necessários para o funcionamento do site são sempre ativos.</p>
-    <p>Para gerenciar suas preferências de cookies, utilize o banner exibido na primeira visita.</p>
-
-    <h2>5. Compartilhamento de dados</h2>
-    <p>Seus dados podem ser compartilhados com:</p>
-    <ul>
-      <li>Google LLC (Analytics e Ads), conforme os termos de uso destes serviços.</li>
-      <li>Provedor de hospedagem responsável pela infraestrutura do site.</li>
-    </ul>
-    <p>Não vendemos nem cedemos seus dados a terceiros para fins comerciais.</p>
-
-    <h2>6. Seus direitos</h2>
-    <p>De acordo com a LGPD, você tem direito a:</p>
-    <ul>
-      <li>Confirmar a existência de tratamento de seus dados.</li>
-      <li>Acessar, corrigir ou solicitar a exclusão dos seus dados.</li>
-      <li>Revogar o consentimento a qualquer momento.</li>
-      <li>Solicitar a portabilidade dos dados.</li>
-    </ul>
-    <p>Para exercer seus direitos, entre em contato: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a></p>
-
-    <h2>7. Segurança</h2>
-    <p>Adotamos medidas técnicas e administrativas adequadas para proteger seus dados pessoais contra acesso não autorizado, perda ou destruição.</p>
-
-    <h2>8. Contato</h2>
-    <p>Renato Rosa do Nascimento — WeShare Escritórios Compartilhados<br />CNPJ: 46.114.100/0001-40<br />Endereço: Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Madison Tower, Sala 706, Jardim Aquárius, São José dos Campos/SP, CEP 12246-000<br />E-mail: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a><br />WhatsApp: (12) 98271-0971</p>
+      <h2>8. Contato</h2>
+      <p>Renato Rosa do Nascimento — WeShare Escritórios Compartilhados<br />CNPJ: 46.114.100/0001-40<br />Endereço: Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Madison Tower, Sala 706, Jardim Aquárius, São José dos Campos/SP, CEP 12246-000<br />E-mail: <a href="mailto:contato@wesharescritorios.com.br">contato@wesharescritorios.com.br</a><br />WhatsApp: (12) 98271-0971</p>
+    </div>
   </main>
 
-  <footer>© {currentYear} WeShare Escritórios Compartilhados · CNPJ 46.114.100/0001-40</footer>
-</body>
-</html>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    background: var(--t-background);
+    min-height: 60vh;
+  }
+
+  .legal-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+  }
+
+  .legal-container h1 {
+    font-family: var(--t-font-serif);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--t-text-main);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .updated {
+    font-size: 0.8rem;
+    color: var(--t-text-muted);
+    margin-bottom: 48px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  .legal-container h2 {
+    font-family: var(--t-font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--t-primary);
+    margin-top: 44px;
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+
+  .legal-container p,
+  .legal-container li {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--t-text-soft);
+    margin-bottom: 14px;
+  }
+
+  .legal-container ul {
+    padding-left: 24px;
+    margin-bottom: 16px;
+  }
+
+  .legal-container li { margin-bottom: 8px; }
+
+  .legal-container a {
+    color: var(--t-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    border-bottom: 1px solid color-mix(in srgb, var(--t-primary) 35%, transparent);
+  }
+
+  .legal-container a:hover { opacity: 0.75; border-bottom-color: var(--t-primary); }
+  .legal-container a:focus-visible { outline: 2px solid var(--t-primary); outline-offset: 2px; }
+
+  .legal-container strong { font-weight: 500; color: var(--t-text-main); }
+
+  @media (max-width: 640px) {
+    .legal-container { padding: 60px 16px 80px; }
+    .legal-container h1 { font-size: 1.8rem; }
+    .legal-container h2 { font-size: 1.15rem; }
+    .legal-container p, .legal-container li { font-size: 15px; }
+  }
+</style>
