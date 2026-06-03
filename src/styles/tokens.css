@@ -1,52 +1,31 @@
-/* ─────────────────────────────────────────────────────────────
-   tokens.css — ÚNICO arquivo que muda entre projetos
-   ─────────────────────────────────────────────────────────────
-   Define os VALORES dos tokens como CSS custom properties com o
-   prefixo --t- (token). O @theme do global.css mapeia estes para os
-   nomes de utilitário do Tailwind (bg-primary, text-text-main…)
-   usando `@theme inline`, de modo que as classes apontem direto
-   para estas vars e respeitem o tema em runtime (incluindo .dark).
-
-   Para customizar um cliente: troque os valores aqui. Nada de cor,
-   fonte ou tamanho hardcodado em outros arquivos.
-   ───────────────────────────────────────────────────────────── */
-
 :root {
-  /* ── Marca ──────────────────────────────────────────── */
-  --t-primary: #1f4637; /* botões, links, destaques */
-  --t-primary-dark: #152d24; /* hover de botões, variantes escuras */
-  --t-secondary: #b08b57; /* acentos, badges */
-  --t-complement: #c7d6c2; /* detalhes decorativos (verde claro) */
+  --t-primary: #274c3b;
+  --t-primary-dark: #002244;
+  --t-secondary: #3b634f;
+  --t-complement: #d9e6df;
 
-  /* ── Superfícies ────────────────────────────────────── */
-  --t-background: #f5f1e8;
-  --t-surface: #fffdf9;
-  --t-surface-alt: #ece3d3;
-  --t-dark: #18211d; /* footer, blocos escuros */
-  --t-border: #d8cdba;
+  --t-background: #f8f8f8;
+  --t-surface: #ffffff;
+  --t-surface-alt: #eeeeee;
+  --t-dark: #222222;
+  --t-text-main: #333333;
+  --t-text-soft: #666666;
+  --t-text-muted: #999999;
+  --t-border: #cccccc;
 
-  /* ── Texto ──────────────────────────────────────────── */
-  --t-text-main: #1f2520; /* corpo */
-  --t-text-soft: #516056; /* subtítulos, labels */
-  --t-text-muted: #7c837d; /* metadados, placeholders */
+  --t-wa: #25d366;
 
-  /* ── Utilitárias ────────────────────────────────────── */
-  --t-wa: #25d366; /* verde WhatsApp */
-
-  /* ── Tipografia ─────────────────────────────────────── */
-  --t-font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --t-font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --t-font-serif: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --t-font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* ── Dark mode ──────────────────────────────────────────
-   Substitua estes valores pela paleta dark do cliente. */
 .dark {
-  --t-background: #101714;
-  --t-surface: #17201c;
-  --t-surface-alt: #1f2b26;
-  --t-dark: #0b100e;
-  --t-border: #2d3b34;
-  --t-text-main: #edf1ec;
-  --t-text-soft: #b5c0b7;
-  --t-text-muted: #7f8c82;
+  --t-background: #1a1a1a;
+  --t-surface: #2c2c2c;
+  --t-surface-alt: #3f3f3f;
+  --t-dark: #0f0f0f;
+  --t-text-main: #f0f0f0;
+  --t-text-soft: #bbbbbb;
+  --t-text-muted: #888888;
+  --t-border: #555555;
 }

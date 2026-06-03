@@ -1,12 +1,4 @@
 ---
-// BaseLayout.astro — wrapper de todas as páginas do projeto.
-//
-// Header e Footer NÃO estão aqui. Vêm da biblioteca Astroteca e são
-// compostos na página (index.astro): <BaseLayout> → <Header /> + main + <Footer />.
-//
-// Inclui: anti-flash dark mode, GTM, Consent Mode v2, SEO/OG, fontes,
-// SkipLink, WhatsAppFloat, CookieBanner, ScrollAnimations.
-
 import GTM from "../components/global/GTM.astro";
 import SkipLink from "../components/global/SkipLink.astro";
 import WhatsAppFloat from "../components/global/WhatsAppFloat.astro";
@@ -28,28 +20,25 @@ interface Props {
 const SITE_URL = "https://wesharescritorios.com.br";
 
 const {
-  title = "WeShare Escritórios Compartilhados | Endereço Fiscal e Coworking no Jardim Aquárius — SJC",
-  description = "Endereço fiscal e comercial de prestígio no Jardim Aquárius, São José dos Campos, por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade. Escritórios privativos e salas de reunião para reservar pelo WhatsApp.",
-  keywords = "endereço fiscal São José dos Campos, escritório compartilhado, coworking Jardim Aquárius, sala de reunião SJC, escritório privativo, endereço comercial CNPJ",
-  ogTitle = "WeShare Escritórios Compartilhados | Jardim Aquárius — São José dos Campos",
-  ogDescription = "Seu CNPJ com endereço de prestígio por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade e com gestão de correspondência inclusa.",
+  title = "WeShare Escritorios Compartilhados | Endereco Fiscal e Coworking no Jardim Aquarius - SJC",
+  description = "Endereco fiscal e comercial de prestigio no Jardim Aquarius, Sao Jose dos Campos, por R$ 119,90/mes. Documentacao no mesmo dia, sem fidelidade. Escritorios privativos e salas de reuniao para reservar pelo WhatsApp.",
+  keywords = "endereco fiscal Sao Jose dos Campos, escritorio compartilhado, coworking Jardim Aquarius, sala de reuniao SJC, escritorio privativo, endereco comercial CNPJ",
+  ogTitle = "WeShare Escritorios Compartilhados | Jardim Aquarius - Sao Jose dos Campos",
+  ogDescription = "Seu CNPJ com endereco de prestigio por R$ 119,90/mes. Documentacao no mesmo dia, sem fidelidade e com gestao de correspondencia inclusa.",
   canonical = SITE_URL,
   noindex = false,
   schema,
 } = Astro.props;
 
-// ID do GTM (vem do .env; vazio = não injeta)
 const GTM_ID = import.meta.env.PUBLIC_GTM_ID || "";
-
-// Tema inicial do site.
 const DEFAULT_THEME = "light";
 
 const defaultSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "WeShare Escritórios Compartilhados",
+  name: "WeShare Escritorios Compartilhados",
   description:
-    "Endereço fiscal e comercial, escritórios privativos, salas de reunião e estações compartilhadas no Jardim Aquárius, São José dos Campos.",
+    "Endereco fiscal e comercial, escritorios privativos, salas de reuniao e estacoes compartilhadas no Jardim Aquarius, Sao Jose dos Campos.",
   url: SITE_URL,
   telephone: "+55-12-98271-0971",
   email: "contato@wesharescritorios.com.br",
@@ -57,8 +46,8 @@ const defaultSchema = {
   address: {
     "@type": "PostalAddress",
     streetAddress:
-      "Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquárius",
-    addressLocality: "São José dos Campos",
+      "Av. Alfredo Ignacio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquarius",
+    addressLocality: "Sao Jose dos Campos",
     addressRegion: "SP",
     postalCode: "12246-000",
     addressCountry: "BR",
@@ -85,78 +74,73 @@ const finalSchema = schema || defaultSchema;
 <head>
   <meta charset="UTF-8" />
 
-  <!-- Dark mode — executa ANTES do CSS para evitar flash.
-       Respeita escolha salva; senão usa data-default-theme; senão prefers-color-scheme. -->
   <script is:inline>
     (function () {
-      var stored = localStorage.getItem('theme');
-      var t = stored
-        || document.documentElement.dataset.defaultTheme
-        || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      if (t === 'dark') document.documentElement.classList.add('dark');
+      var stored = localStorage.getItem("theme");
+      var theme =
+        stored ||
+        document.documentElement.dataset.defaultTheme ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
     })();
   </script>
 
   {GTM_ID && <GTM id={GTM_ID} />}
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#274C3B" />
 
-  <meta name="theme-color" content="#1F4637" />
-
-  <!-- SEO -->
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="keywords" content={keywords} />
   {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonical} />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={ogTitle} />
   <meta property="og:description" content={ogDescription} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={`${SITE_URL}/og-image.webp`} />
+  <meta property="og:image" content={`${SITE_URL}/og-image.svg`} />
   <meta property="og:locale" content="pt_BR" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle} />
   <meta name="twitter:description" content={ogDescription} />
-  <meta name="twitter:image" content={`${SITE_URL}/og-image.webp`} />
+  <meta name="twitter:image" content={`${SITE_URL}/og-image.svg`} />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Fontes do projeto: Cormorant Garamond (títulos) + Manrope (corpo).
-       Sincronizadas com --t-font-serif / --t-font-sans em tokens.css. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
     as="style"
     onload="this.onload=null;this.rel='stylesheet'"
   />
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
   </noscript>
 
-  <!-- Schema.org JSON-LD -->
   <script is:inline type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 
-  <!-- Google Consent Mode v2 — antes do GTM -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'analytics_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'wait_for_update': 500
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      analytics_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500,
     });
   </script>
 </head>
@@ -173,21 +157,9 @@ const finalSchema = schema || defaultSchema;
   )}
 
   <SkipLink />
-
-  <!--
-    Header e Footer vêm da biblioteca Astroteca. Na página:
-      <BaseLayout>
-        <Header ... />
-        <main id="main-content"> ... </main>
-        <Footer ... />
-      </BaseLayout>
-  -->
   <slot />
-
   <WhatsAppFloat />
-
   <CookieBanner client:idle />
-
   <ScrollAnimations client:load />
 </body>
 </html>

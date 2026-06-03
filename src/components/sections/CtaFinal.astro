@@ -1,63 +1,55 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import ctaFinalFundo from "../../assets/images/cta_final_fundo_webp.webp";
 
 const WA_URL =
   "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
-const EMAIL = "contato@wesharescritorios.com.br";
-
-const garantias = [
-  { icon: "lucide:message-circle", texto: "Atendimento pelo WhatsApp todos os dias" },
-  { icon: "lucide:file-check", texto: "Documentação liberada no mesmo dia" },
-  { icon: "lucide:shield-check", texto: "Cancele quando quiser, sem multa" },
-];
 ---
 
-<section class="section-py bg-dark relative overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div
-      class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20"
-      style="background: radial-gradient(circle, var(--t-primary) 0%, transparent 70%);"
-    ></div>
-  </div>
+<section class="bg-surface">
+  <div class="container-wide section-py">
+    <div class="relative" data-animate-scale>
+      <Image
+        src={ctaFinalFundo}
+        alt="Fundo CTA final - Endereco de prestigio"
+        class="aspect-[1920/760] w-full object-cover rounded-lg"
+        width={1920}
+        height={760}
+      />
 
-  <div class="container-content relative z-10 text-center">
-    <h2 class="font-serif text-display-lg text-white mb-4" data-animate>
-      Sua empresa com endereço de prestígio a partir de hoje
-    </h2>
-    <p class="text-body-lg max-w-2xl mx-auto mb-8" style="color: rgba(255,255,255,0.75);" data-animate>
-      Sem burocracia, sem prazo de fidelidade e sem complicação. Fale agora pelo WhatsApp e
-      receba a documentação no mesmo dia da assinatura.
-    </p>
-
-    <div class="flex flex-wrap justify-center items-center gap-4 mb-10" data-animate>
-      <a
-        href={WA_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-tracking="click-whatsapp-cta-final"
-        data-section="cta-final"
-        class="btn-primary"
-      >
-        <Icon name="lucide:message-circle" class="w-5 h-5" />
-        Falar com a WeShare agora
-      </a>
-      <a
-        href={`mailto:${EMAIL}`}
-        class="inline-flex items-center gap-2 font-sans font-600 text-sm link-underline"
-        style="color: rgba(255,255,255,0.85);"
-      >
-        <Icon name="lucide:mail" class="w-4 h-4" />
-        {EMAIL}
-      </a>
+      <div class="cta-panel surface-card bg-primary p-6 text-white md:absolute md:left-[5%] md:top-[13%] md:w-[23rem] md:border-primary">
+        <span class="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/75">Fale com a WeShare</span>
+        <h2 class="mt-4 font-serif text-display-md text-white">
+          Sua empresa com endereco de prestigio a partir de hoje
+        </h2>
+        <p class="mt-3 text-body-md text-white/82">
+          Sem burocracia, sem prazo de fidelidade e sem complicacao. Fale agora pelo WhatsApp e receba a documentacao no mesmo dia da assinatura.
+        </p>
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracking="click-whatsapp-cta-final"
+          data-section="cta-final"
+          class="mt-5 inline-flex btn-dark border-white bg-dark px-4.5 py-2.5"
+        >
+          <Icon name="lucide:message-circle" class="h-4 w-4" />
+          Falar com a WeShare agora
+        </a>
+      </div>
     </div>
-
-    <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3" data-animate>
-      {garantias.map((g) => (
-        <li class="flex items-center gap-2" style="color: rgba(255,255,255,0.7);">
-          <Icon name={g.icon} class="w-4 h-4" style="color: var(--t-complement);" aria-hidden="true" />
-          <span class="font-sans text-sm">{g.texto}</span>
-        </li>
-      ))}
-    </ul>
   </div>
 </section>
+
+<style>
+  .cta-panel {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.14);
+  }
+
+  @media (max-width: 767px) {
+    .cta-panel {
+      margin-top: 1rem;
+    }
+  }
+</style>

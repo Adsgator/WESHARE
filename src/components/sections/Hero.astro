@@ -1,206 +1,102 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import heroPrincipal from "../../assets/images/hero_principal_webp.webp";
 
 const WA_URL =
   "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
-
-const highlights = [
-  {
-    icon: "lucide:file-check-2",
-    text: "Documentação imediata para abertura ou transferência de CNPJ",
-  },
-  {
-    icon: "lucide:mail",
-    text: "Gestão de correspondência inclusa no plano",
-  },
-  {
-    icon: "lucide:shield-check",
-    text: "Sem prazo de fidelidade e com cancelamento simples",
-  },
-];
-
-const heroSlots = [
-  {
-    label: "Foto principal",
-    title: "Recepção e lounge",
-    size: "1440 x 1080",
-    note: "Imagem de abertura com recepção, lounge e atmosfera premium.",
-    className: "lg:col-span-7 lg:row-span-2 min-h-[24rem]",
-  },
-  {
-    label: "Foto de apoio",
-    title: "Sala de reunião",
-    size: "1200 x 900",
-    note: "Tomada com mesa, vidro e vista para reforçar credibilidade.",
-    className: "lg:col-span-5 min-h-[11.25rem]",
-  },
-  {
-    label: "Foto de apoio",
-    title: "Escritório privativo",
-    size: "1200 x 900",
-    note: "Ambiente mais íntimo para mostrar privacidade e conforto.",
-    className: "lg:col-span-5 min-h-[11.25rem]",
-  },
-];
-
-const stats = [
-  { value: "R$ 119,90", label: "por mês no endereço fiscal e comercial" },
-  { value: "24h / 7", label: "acesso ao espaço com código exclusivo" },
-  { value: "5,0", label: "avaliação atual no Google" },
-];
 ---
 
-<section id="hero-section" class="hero-shell section-py relative overflow-hidden" aria-label="Apresentação principal">
-  <div class="hero-orb hero-orb-left" aria-hidden="true"></div>
-  <div class="hero-orb hero-orb-right" aria-hidden="true"></div>
-
+<section id="hero-section" class="section-py relative overflow-hidden bg-primary">
+  <div class="hero-grid absolute inset-0"></div>
   <div class="container-wide relative z-10">
-    <div class="grid items-center gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-12">
-      <div>
-        <span class="eyebrow-pill mb-6">
-          <Icon name="lucide:map-pin" class="h-3.5 w-3.5 text-secondary" />
-          Jardim Aquarius · São José dos Campos
-        </span>
-
-        <h1 class="font-serif text-display-xl text-balance text-text-main mb-6" data-animate>
-          Seu CNPJ com endereço de prestígio e um escritório que sustenta a impressão certa.
+    <div class="grid gap-7 lg:grid-cols-[minmax(0,1fr)_9.5rem] lg:items-start">
+      <div class="max-w-[44rem]">
+        <span class="label-tag mb-5 text-white" data-animate>Endereco fiscal e escritorios no Jardim Aquarius</span>
+        <h1 class="font-serif text-display-xl text-white" data-animate>
+          Seu CNPJ com endereco de prestigio no Jardim Aquarius
         </h1>
-
-        <p class="max-w-xl text-body-lg text-text-soft mb-8" data-animate>
-          Registre ou transfira sua empresa por <strong class="font-semibold text-text-main">R$ 119,90 por mês</strong>,
-          com documentação liberada no mesmo dia, gestão de correspondência inclusa e
-          acesso a ambientes que reforçam a credibilidade da sua marca.
+        <p class="mt-5 max-w-[36rem] text-body-lg text-white/85" data-animate>
+          Registre ou transfira sua empresa por <strong class="font-semibold text-text-main">R$ 119,90 por mes</strong>.
+          Documentacao liberada no mesmo dia da assinatura, sem prazo de fidelidade e com gestao de correspondencia inclusa.
         </p>
 
-        <div class="flex flex-wrap gap-3 mb-10" data-animate>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row" data-animate>
           <a
             href={WA_URL}
             target="_blank"
             rel="noopener noreferrer"
             data-tracking="click-whatsapp-hero"
             data-section="hero"
-            class="btn-primary"
+            class="btn-primary bg-white text-primary hover:bg-white/90"
           >
-            <Icon name="lucide:message-circle" class="h-5 w-5" />
-            Quero meu endereço fiscal agora
+            <Icon name="lucide:message-circle" class="h-4 w-4" />
+            Quero meu endereco fiscal agora
           </a>
-          <a href="tel:+5512982710971" class="btn-ghost" aria-label="Ligar para (12) 98271-0971">
+          <a href="tel:+5512982710971" class="btn-ghost border-white text-white hover:bg-white/10">
             <Icon name="lucide:phone" class="h-4 w-4" />
             (12) 98271-0971
           </a>
         </div>
-
-        <ul class="grid gap-3 sm:grid-cols-2" data-animate-group>
-          {highlights.map((highlight) => (
-            <li class="hero-highlight" data-animate-item>
-              <span class="hero-highlight-icon" aria-hidden="true">
-                <Icon name={highlight.icon} class="h-4 w-4" />
-              </span>
-              <span class="text-body-sm text-text-soft">{highlight.text}</span>
-            </li>
-          ))}
-        </ul>
       </div>
 
-      <div class="premium-panel hero-visual p-4 sm:p-5 lg:p-6" data-animate-scale>
-        <div class="grid gap-4 lg:grid-cols-12 lg:grid-rows-2">
-          {heroSlots.map((slot) => (
-            <article class:list={["image-slot", slot.className]}>
-              <div class="image-slot-content">
-                <div>
-                  <span class="image-slot-label mb-4">{slot.label}</span>
-                  <p class="font-serif text-display-sm text-text-main">{slot.title}</p>
-                </div>
-                <div class="space-y-2">
-                  <p class="image-slot-size">{slot.size}</p>
-                  <p class="image-slot-note">{slot.note}</p>
-                </div>
-              </div>
-            </article>
-          ))}
+      <a
+        href={WA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracking="click-whatsapp-hero-card"
+        data-section="hero"
+        class="hero-square-card flex min-h-[8.75rem] flex-col justify-between border border-primary bg-primary p-4 text-white"
+        data-animate-right
+      >
+        <span class="text-[0.66rem] font-semibold uppercase tracking-[0.16em]">Fale agora</span>
+        <div class="flex items-end justify-between gap-3">
+          <span class="font-serif text-[0.96rem] leading-5">Receba a documentacao no mesmo dia</span>
+          <Icon name="lucide:arrow-up-right" class="h-4.5 w-4.5 flex-shrink-0" />
         </div>
+      </a>
+    </div>
 
-        <div class="hero-stats mt-4 grid gap-3 sm:grid-cols-3">
-          {stats.map((stat) => (
-            <div class="hero-stat-card">
-              <p class="stat-number">{stat.value}</p>
-              <p class="stat-label">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+    <div class="relative mt-9 lg:mt-10" data-animate-scale>
+      <Image
+        src={heroPrincipal}
+        alt="Fachada principal do WeShare - Escritórios Compartilhados"
+        class="rounded-lg"
+        width={1600}
+        height={900}
+      />
+
+      <div class="hero-overlay-card surface-card max-w-[20rem] bg-dark/92 p-5 text-white md:absolute md:left-[5%] md:top-[10%] md:border-dark">
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/70">WeShare Escritorios Compartilhados</p>
+        <p class="mt-3 text-[0.94rem] leading-6 text-white/92">
+          Endereco fiscal, sala de reuniao, escritorio privativo e estrutura profissional para voce atender,
+          trabalhar e posicionar melhor a sua empresa.
+        </p>
+        <div class="mt-4 h-2.5 w-2.5 bg-primary"></div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .hero-shell {
-    background:
-      radial-gradient(circle at top left, color-mix(in srgb, var(--t-complement) 38%, transparent) 0%, transparent 34%),
-      linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--t-background) 68%, white 32%) 0%,
-        color-mix(in srgb, var(--t-surface) 72%, var(--t-background) 28%) 48%,
-        color-mix(in srgb, var(--t-surface-alt) 76%, white 24%) 100%
-      );
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
-  .hero-orb {
-    position: absolute;
-    border-radius: 999px;
-    filter: blur(20px);
-    opacity: 0.65;
-    pointer-events: none;
+  .hero-square-card {
+    box-shadow: var(--shadow-float);
   }
 
-  .hero-orb-left {
-    width: 18rem;
-    height: 18rem;
-    top: 3rem;
-    left: -7rem;
-    background: color-mix(in srgb, var(--t-secondary) 22%, transparent);
+  .hero-overlay-card {
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.18);
   }
 
-  .hero-orb-right {
-    width: 22rem;
-    height: 22rem;
-    right: -8rem;
-    bottom: 1rem;
-    background: color-mix(in srgb, var(--t-primary) 18%, transparent);
-  }
-
-  .hero-visual {
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--t-surface) 94%, transparent) 0%, color-mix(in srgb, var(--t-surface-alt) 55%, var(--t-surface) 45%) 100%);
-  }
-
-  .hero-highlight {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 1rem 1.1rem;
-    border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--t-border) 88%, transparent);
-    background: color-mix(in srgb, var(--t-surface) 84%, transparent);
-    box-shadow: var(--shadow-card);
-  }
-
-  .hero-highlight-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    flex-shrink: 0;
-    border-radius: 0.9rem;
-    color: var(--t-primary);
-    background: color-mix(in srgb, var(--t-primary) 10%, transparent);
-  }
-
-  .hero-stat-card {
-    padding: 1.1rem 1.2rem;
-    border-radius: 1.15rem;
-    border: 1px solid color-mix(in srgb, var(--t-border) 80%, transparent);
-    background: color-mix(in srgb, var(--t-surface) 86%, transparent);
+  @media (max-width: 767px) {
+    .hero-overlay-card {
+      margin-top: 1rem;
+    }
   }
 </style>

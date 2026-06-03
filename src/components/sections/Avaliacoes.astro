@@ -1,130 +1,124 @@
 ---
-import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import ambienteReuniao from "../../assets/images/ambiente_reuniao_webp.webp";
+import ambienteFachada from "../../assets/images/ambiente_fachada_webp.webp";
+import ambientePrivativo from "../../assets/images/ambiente_privativo_webp.webp";
+import ambienteLounge from "../../assets/images/ambiente_lounge_webp.webp";
+import ambienteConferencia from "../../assets/images/ambiente_conferencia_webp.webp";
 
-const GOOGLE_URL =
-  "https://www.google.com/search?q=WeShare+Escrit%C3%B3rios+Compartilhados+S%C3%A3o+Jos%C3%A9+dos+Campos";
+const ambientes = [
+  {
+    label: "Sala de Reuniao",
+    image: ambienteReuniao,
+    size: "1600 x 900",
+    className: "lg:col-span-12 aspect-[16/9]",
+  },
+  {
+    label: "Endereco Fiscal",
+    image: ambienteFachada,
+    size: "1080 x 1320",
+    className: "lg:col-span-7 aspect-[1080/1320]",
+  },
+  {
+    label: "Escritorio Privativo",
+    image: ambientePrivativo,
+    size: "860 x 1320",
+    className: "lg:col-span-5 aspect-[860/1320]",
+  },
+  {
+    label: "Lounge",
+    image: ambienteLounge,
+    size: "1080 x 720",
+    className: "lg:col-span-6 aspect-[1080/720]",
+  },
+  {
+    label: "Escritorio Compartilhado",
+    image: ambienteConferencia,
+    size: "860 x 720",
+    className: "lg:col-span-6 aspect-[860/720]",
+  },
+];
 
-// Depoimentos ilustrativos — substituir pelos reais do Google.
 const depoimentos = [
   {
     texto:
-      "Atendimento rápido pelo WhatsApp e documentação do endereço fiscal resolvida no mesmo dia. Ambiente reservado e muito bem localizado.",
+      "Atendimento rapido pelo WhatsApp e documentacao do endereco fiscal resolvida no mesmo dia. Ambiente reservado e muito bem localizado.",
     nome: "Cliente WeShare",
   },
   {
     texto:
-      "Reservei a sala de reunião para receber um cliente importante. Espaço limpo, climatizado e com tudo funcionando. Passou a impressão certa.",
+      "Reservei a sala de reuniao para receber um cliente importante. Espaco limpo, climatizado e com tudo funcionando. Passou a impressao certa.",
     nome: "Cliente WeShare",
   },
   {
     texto:
-      "Uso o escritório privativo quando preciso de foco. Acesso 24h com código próprio e nada cobrado à parte. Vale cada centavo.",
+      "Uso o escritorio privativo quando preciso de foco. Acesso 24h com codigo proprio e nada cobrado a parte. Vale cada centavo.",
     nome: "Cliente WeShare",
   },
 ];
 ---
 
-<section class="section-py bg-background">
-  <div class="container-wide">
-    <!-- Rating hero block -->
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="label-tag block mb-3" data-animate>Avaliações Google</span>
-      <h2 class="font-serif text-display-lg text-text-main mb-6" data-animate>
-        Quem já usou, aprovou
+<section class="bg-surface">
+  <div class="container-wide section-py">
+    <div class="max-w-[42rem]">
+      <span class="label-tag mb-5" data-animate>Ambientes e servicos</span>
+      <h2 class="font-serif text-display-lg text-text-main" data-animate>
+        Colabore, atenda e trabalhe com a estrutura certa
       </h2>
-
-      <!-- Bloco de rating destacado -->
-      <div
-        class="inline-flex items-center gap-6 px-8 py-5 rounded-2xl border border-border shadow-card bg-surface"
-        data-animate
-      >
-        <div class="text-left">
-          <div class="flex items-center gap-1 mb-1" aria-label="5 estrelas">
-            {
-              Array.from({ length: 5 }).map(() => (
-                <Icon
-                  name="lucide:star"
-                  class="w-5 h-5 text-secondary fill-current"
-                  aria-hidden="true"
-                />
-              ))
-            }
-          </div>
-          <p class="font-sans text-xs text-text-muted">54 avaliações verificadas</p>
-        </div>
-        <div
-          class="w-px h-10 bg-border flex-shrink-0"
-          aria-hidden="true"
-        >
-        </div>
-        <div class="text-left">
-          <p class="font-serif font-700 text-display-sm text-text-main leading-none">
-            5,0
-          </p>
-          <p class="font-sans text-xs text-text-muted mt-0.5">Google Maps</p>
-        </div>
-      </div>
+      <p class="mt-4 max-w-[35rem] text-body-lg text-text-soft" data-animate>
+        Sala de reuniao climatizada, escritorio privativo com acesso 24h, lounge confortavel e espaco compartilhado bem equipado. Tudo para sua empresa funcionar com profissionalismo.
+      </p>
     </div>
 
-    <!-- Cards -->
-    <div class="grid md:grid-cols-3 gap-5 mb-8" data-animate-group>
-      {
-        depoimentos.map((d) => (
-          <figure
-            class="bg-surface rounded-2xl p-7 border border-border shadow-card card-hover flex flex-col"
-            data-animate-item
-          >
-            <!-- Aspas decorativas -->
-            <div
-              class="font-serif text-5xl text-primary/20 leading-none mb-2 -mt-2"
-              aria-hidden="true"
-            >
-              "
-            </div>
-            <blockquote class="text-body-sm text-text-soft flex-1 mb-6 leading-relaxed">
-              {d.texto}
-            </blockquote>
-            <figcaption class="flex items-center gap-3 pt-4 border-t border-border">
-              <span
-                class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-serif font-700 text-sm flex-shrink-0"
-                aria-hidden="true"
-              >
-                {d.nome.charAt(0)}
+    <div class="mt-8 grid gap-3 lg:grid-cols-12" data-animate-group>
+      {ambientes.map((item) => (
+        <article class:list={["relative", item.className]} data-animate-item>
+          <Image
+            src={item.image}
+            alt={item.label}
+            class="h-full w-full object-cover"
+            width={1600}
+            height={900}
+          />
+
+          <div class="media-tab">
+            <span class="media-tab__label">{item.label}</span>
+            <span class="media-tab__accent"></span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="bg-dark text-white">
+    <div class="container-wide section-py-sm">
+      <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <span class="label-tag mb-5 text-white/70 before:bg-primary" data-animate>Avaliacoes Google</span>
+          <h3 class="font-serif text-display-md text-white" data-animate>Quem ja usou, aprovou</h3>
+        </div>
+        <div class="text-left lg:text-right" data-animate>
+          <p class="font-serif text-[1.18rem] leading-none text-white">5 estrelas</p>
+          <p class="mt-1 text-[0.78rem] font-medium uppercase tracking-[0.14em] text-white/55">54 avaliacoes no Google</p>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-px overflow-hidden border border-white/12 lg:grid-cols-3" data-animate-group>
+        {depoimentos.map((depoimento) => (
+          <figure class="flex min-h-[16rem] flex-col justify-between bg-dark px-6 py-7" data-animate-item>
+            <blockquote class="text-body-md text-white/78">{depoimento.texto}</blockquote>
+            <figcaption class="mt-7 flex items-center gap-3 border-t border-white/12 pt-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/12 text-[0.84rem] font-semibold text-white">
+                {depoimento.nome.charAt(0)}
               </span>
               <div>
-                <p class="font-sans font-600 text-sm text-text-main">
-                  {d.nome}
-                </p>
-                <div class="flex items-center gap-0.5 mt-0.5" aria-label="5 estrelas">
-                  {Array.from({ length: 5 }).map(() => (
-                    <Icon
-                      name="lucide:star"
-                      class="w-3 h-3 text-secondary fill-current"
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
+                <p class="font-serif text-[1rem] text-white">{depoimento.nome}</p>
+                <p class="mt-1 text-[0.72rem] font-medium uppercase tracking-[0.12em] text-white/45">Avaliacao verificada</p>
               </div>
             </figcaption>
           </figure>
-        ))
-      }
-    </div>
-
-    <p class="text-center text-body-sm text-text-muted mb-6">
-      Depoimentos ilustrativos. Veja as avaliações verificadas diretamente no Google.
-    </p>
-
-    <div class="flex justify-center" data-animate>
-      <a
-        href={GOOGLE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-ghost"
-      >
-        <Icon name="lucide:star" class="w-4 h-4" />
-        Ver avaliações no Google
-      </a>
+        ))}
+      </div>
     </div>
   </div>
 </section>

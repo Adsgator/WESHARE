@@ -1,103 +1,103 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import manifestoEquipe from "../../assets/images/manifesto_equipe_webp.webp";
 
-const diferenciais = [
-  {
-    icon: "lucide:clock",
-    titulo: "Autoatendimento 24 horas por dia",
-    descricao:
-      "Acesse o espaço a qualquer hora sem depender de recepcionista ou horário de atendimento. Seu código de acesso é gerado logo após a confirmação do pagamento.",
-  },
-  {
-    icon: "lucide:shield-check",
-    titulo: "Ambiente reservado e sóbrio",
-    descricao:
-      "Sem o barulho típico de coworking cheio. Um espaço discreto, climatizado e organizado que transmite profissionalismo para quem entra pela primeira vez.",
-  },
-  {
-    icon: "lucide:map-pin",
-    titulo: "Endereço no bairro certo",
-    descricao:
-      "O Jardim Aquárius é a região mais valorizada de São José dos Campos. Sua empresa registrada aqui já comunica credibilidade antes mesmo de você abrir a boca.",
-  },
-  {
-    icon: "lucide:wallet",
-    titulo: "Tudo incluso, sem surpresa na fatura",
-    descricao:
-      "Café expresso, água mineral, impressora colorida, Wi-Fi de qualidade e ambiente climatizado. Nada cobrado à parte. O que está na reserva é o que você paga.",
-  },
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
+
+const microbeneficios = [
+  { icon: "lucide:file-check-2", texto: "Documentacao imediata" },
+  { icon: "lucide:mail", texto: "Gestao de correspondencia" },
+  { icon: "lucide:clock-3", texto: "Acesso 24h" },
+  { icon: "lucide:badge-check", texto: "Sem fidelidade" },
+  { icon: "lucide:shield-check", texto: "Ambiente reservado" },
+  { icon: "lucide:map-pinned", texto: "Endereco prestigiado" },
+  { icon: "lucide:wifi", texto: "Wi-Fi de qualidade" },
+  { icon: "lucide:coffee", texto: "Cafe, agua e impressora inclusos" },
 ];
 ---
 
-<section class="section-py bg-dark relative overflow-hidden">
-  <!-- Decoração de fundo sutil -->
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-    <div
-      class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full opacity-5"
-      style="background: radial-gradient(circle, var(--t-primary) 0%, transparent 70%);"
-    >
+<section class="bg-dark text-white">
+  <div class="container-wide section-py">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_13rem] lg:items-start">
+      <div class="max-w-[44rem]">
+        <span class="label-tag mb-5 text-white/70 before:bg-primary" data-animate>Exclusividade no uso do espaco</span>
+        <h2 class="font-serif text-display-lg leading-tight text-white" data-animate>
+          Voce nao aluga uma mesa num coworking.
+          <span class="mt-2 inline bg-primary px-2 py-1 text-white">Voce usa um escritorio completo.</span>
+        </h2>
+        <p class="mt-5 max-w-[34rem] text-body-md text-white/70" data-animate>
+          Nosso diferencial e a exclusividade: clientes utilizam nosso espaco como se dele fosse,
+          com sobriedade, praticidade e uma sensacao real de pertencimento.
+        </p>
+      </div>
+
+      <div class="space-y-3 lg:pt-1" data-animate-right>
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white/60">Contato direto</p>
+        <a href="tel:+5512982710971" class="block font-serif text-[1.55rem] leading-none text-white">
+          +55 12 98271 0971
+        </a>
+      </div>
+    </div>
+
+    <div class="relative mt-9 lg:mt-10" data-animate-scale>
+      <Image
+        src={manifestoEquipe}
+        alt="Equipe do WeShare - Manifestação de valores"
+        class="rounded-lg"
+        width={1600}
+        height={820}
+      />
+
+      <a
+        href={WA_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tracking="click-whatsapp-manifesto"
+        data-section="manifesto"
+        class="manifesto-cta-card absolute bottom-5 right-5 flex w-[10.75rem] flex-col justify-between border border-primary bg-primary p-4 text-white"
+      >
+        <span class="text-[0.64rem] font-semibold uppercase tracking-[0.16em]">Reservar agora</span>
+        <div class="mt-5 flex items-end justify-between gap-3">
+          <span class="font-serif text-[1rem] leading-5">Falar com a WeShare</span>
+          <Icon name="lucide:arrow-up-right" class="h-4 w-4 flex-shrink-0" />
+        </div>
+      </a>
     </div>
   </div>
 
-  <div class="container-wide relative z-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-      <!-- Coluna esquerda: copy -->
-      <div>
-        <span
-          class="label-tag block mb-3 text-complement"
-          data-animate
-        >
-          Por que a WeShare
-        </span>
-        <h2
-          class="font-serif text-display-lg mb-5 text-white"
-          data-animate
-        >
-          Você não aluga uma mesa num coworking. Você usa um escritório completo.
-        </h2>
-        <p class="text-body-lg max-w-prose mb-10 text-white/70" data-animate>
-          Aqui não há filas na impressora, sala lotada nem ambiente de feira. É o espaço
-          do Renato, compartilhado com quem realmente precisa de estrutura profissional.
-        </p>
+  <div class="text-text-main" style="background: color-mix(in srgb, var(--t-surface-alt) 72%, white 28%);">
+    <div class="container-wide section-py-sm">
+      <span class="label-tag mb-5" data-animate>Estrutura incluida</span>
+      <h3 class="font-serif text-display-md text-text-main" data-animate>
+        Uma estrutura completa a servico do seu negocio
+      </h3>
 
-        <blockquote
-          class="relative pl-5 font-serif italic text-body-lg text-white/85"
-          style="border-left: 2px solid var(--t-complement);"
-          data-animate
-        >
-          "Nosso diferencial é a exclusividade: clientes utilizam nosso espaço como se
-          dele fosse, um compartilhamento do meu próprio escritório."
-        </blockquote>
-      </div>
-
-      <!-- Coluna direita: grid de diferenciais -->
-      <div class="grid sm:grid-cols-2 gap-4" data-animate-group>
-        {
-          diferenciais.map((d) => (
-            <article
-              class="rounded-2xl p-6 flex flex-col gap-4 transition-colors duration-300"
-              style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
-              data-animate-item
-            >
-              <span
-                class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style="background: rgba(255,255,255,0.08); color: var(--t-complement);"
-                aria-hidden="true"
-              >
-                <Icon name={d.icon} class="w-5 h-5" />
-              </span>
-              <div>
-                <h3 class="font-serif text-base font-600 text-white mb-1.5">
-                  {d.titulo}
-                </h3>
-                <p class="text-body-sm text-white/60 leading-relaxed">
-                  {d.descricao}
-                </p>
-              </div>
-            </article>
-          ))
-        }
+      <div class="mt-7 grid gap-px overflow-hidden border border-border sm:grid-cols-2 xl:grid-cols-4" data-animate-group>
+        {microbeneficios.map((item) => (
+          <div class="flex items-center gap-3 bg-surface px-4 py-4" data-animate-item>
+            <span class="flex h-10 w-10 items-center justify-center border border-border text-primary">
+              <Icon name={item.icon} class="h-4.5 w-4.5" />
+            </span>
+            <span class="text-[0.76rem] font-medium uppercase tracking-[0.07em] text-text-main">{item.texto}</span>
+          </div>
+        ))}
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .manifesto-cta-card {
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 767px) {
+    .manifesto-cta-card {
+      position: static;
+      margin-top: 1rem;
+      width: 100%;
+    }
+  }
+</style>

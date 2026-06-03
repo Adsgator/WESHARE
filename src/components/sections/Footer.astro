@@ -9,83 +9,38 @@ const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Ed.+Medison+Tower+Jardim+Aqu%C3%A1rius+S%C3%A3o+Jos%C3%A9+dos+Campos";
 
 const navItems = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Como Funciona", href: "#como-funciona" },
-  { label: "Preços", href: "#precos" },
+  { label: "Servicos", href: "#servicos" },
+  { label: "Como funciona", href: "#como-funciona" },
+  { label: "Precos", href: "#precos" },
 ];
 ---
 
 <footer id="footer" class="bg-dark text-white">
-  <div class="container-wide py-16">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-
-      <!-- Marca -->
-      <div class="lg:col-span-1">
-        <div class="flex items-center gap-2.5 mb-4">
-          <span class="w-9 h-9 rounded-lg flex items-center justify-center bg-primary" aria-hidden="true">
-            <Icon name="lucide:building-2" class="w-5 h-5 text-white" />
-          </span>
-          <span class="font-serif font-700 text-lg">WeShare</span>
-        </div>
-        <p class="text-body-sm leading-relaxed" style="color: rgba(255,255,255,0.6);">
-          Escritórios compartilhados e endereço fiscal de prestígio no Jardim Aquárius,
-          São José dos Campos.
+  <div class="container-wide py-14">
+    <div class="grid gap-8 lg:grid-cols-[1.1fr_1fr_0.78fr_0.82fr]">
+      <div>
+        <p class="max-w-[18rem] font-serif text-[1.45rem] leading-[1.1] text-white">contato@wesharescritorios.com.br</p>
+        <p class="mt-5 max-w-md text-body-md text-white/65">
+          Endereco fiscal, escritorios privativos, sala de reuniao e uso compartilhado no Jardim Aquarius, Sao Jose dos Campos.
         </p>
+        <div class="mt-6 flex flex-col gap-2.5 text-body-sm text-white/72">
+          <p>Av. Alfredo Ignacio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquarius, Sao Jose dos Campos, SP, CEP 12246-000</p>
+          <a href="tel:+5512982710971" class="inline-flex w-fit items-center gap-2 hover:text-white">
+            <Icon name="lucide:phone" class="h-4 w-4 text-primary" />
+            (12) 98271-0971
+          </a>
+          <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" class="inline-flex w-fit items-center gap-2 hover:text-white">
+            <Icon name="lucide:instagram" class="h-4 w-4 text-primary" />
+            @wesharescritorios
+          </a>
+        </div>
       </div>
 
-      <!-- Navegação -->
-      <nav aria-label="Links do rodapé">
-        <h3 class="font-sans font-600 text-sm uppercase tracking-wider mb-4" style="color: rgba(255,255,255,0.5);">
-          Navegação
-        </h3>
-        <ul class="flex flex-col gap-2.5">
-          {navItems.map((item) => (
-            <li>
-              <a href={item.href} class="text-body-sm link-underline" style="color: rgba(255,255,255,0.8);">
-                {item.label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" class="text-body-sm link-underline" style="color: rgba(255,255,255,0.8);">
-              Localização
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Contato -->
-      <div>
-        <h3 class="font-sans font-600 text-sm uppercase tracking-wider mb-4" style="color: rgba(255,255,255,0.5);">
-          Contato
-        </h3>
-        <ul class="flex flex-col gap-3 text-body-sm" style="color: rgba(255,255,255,0.8);">
-          <li class="flex items-start gap-2.5">
-            <Icon name="lucide:map-pin" class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: var(--t-complement);" aria-hidden="true" />
-            <span>Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Medison Tower, Sala 706, Jardim Aquárius, São José dos Campos, SP, CEP 12246-000</span>
-          </li>
-          <li class="flex items-center gap-2.5">
-            <Icon name="lucide:phone" class="w-4 h-4 flex-shrink-0" style="color: var(--t-complement);" aria-hidden="true" />
-            <a href="tel:+5512982710971" class="link-underline">(12) 98271-0971</a>
-          </li>
-          <li class="flex items-center gap-2.5">
-            <Icon name="lucide:mail" class="w-4 h-4 flex-shrink-0" style="color: var(--t-complement);" aria-hidden="true" />
-            <a href={`mailto:${EMAIL}`} class="link-underline break-all">{EMAIL}</a>
-          </li>
-          <li class="flex items-center gap-2.5">
-            <Icon name="lucide:instagram" class="w-4 h-4 flex-shrink-0" style="color: var(--t-complement);" aria-hidden="true" />
-            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" class="link-underline">@wesharescritorios</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- WhatsApp + horário + tema -->
-      <div>
-        <h3 class="font-sans font-600 text-sm uppercase tracking-wider mb-4" style="color: rgba(255,255,255,0.5);">
-          Atendimento
-        </h3>
-        <p class="text-body-sm mb-4" style="color: rgba(255,255,255,0.7);">
-          Reservas pelo WhatsApp, todos os dias. Acesso ao espaço 24h por dia, 7 dias por semana.
+      <div class="border border-white/12 p-5">
+        <span class="label-tag text-white/70 before:bg-primary">Contato rapido</span>
+        <h3 class="mt-4 font-serif text-[1.08rem] leading-6 text-white">Receba atendimento e orientacao pelo WhatsApp</h3>
+        <p class="mt-3 text-body-md text-white/65">
+          Fale agora para consultar disponibilidade, valores das salas fisicas e documentacao para o endereco fiscal.
         </p>
         <a
           href={WA_URL}
@@ -93,61 +48,78 @@ const navItems = [
           rel="noopener noreferrer"
           data-tracking="click-whatsapp-footer"
           data-section="footer"
-          class="inline-flex items-center gap-2 bg-wa text-white font-sans font-medium px-5 py-3 rounded text-sm mb-6"
+          class="mt-5 inline-flex btn-primary border-primary bg-primary px-4.5 py-2.5"
         >
-          <Icon name="lucide:message-circle" class="w-4 h-4" />
           Fale pelo WhatsApp
         </a>
+      </div>
 
-        <div>
+      <nav aria-label="Links do rodape">
+        <h3 class="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white/55">Navegacao</h3>
+        <ul class="mt-4 flex flex-col gap-2.5 text-body-sm text-white/74">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-white">{item.label}</a>
+            </li>
+          ))}
+          <li>
+            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" class="hover:text-white">Localizacao</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div>
+        <h3 class="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-white/55">Atendimento</h3>
+        <p class="mt-4 text-body-sm text-white/74">
+          Reservas pelo WhatsApp, todos os dias. Acesso ao espaco 24h por dia, 7 dias por semana.
+        </p>
+        <div class="mt-5">
           <button
             id="theme-toggle"
             type="button"
             aria-label="Alternar tema claro e escuro"
-            class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-sans"
-            style="color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.18);"
+            class="inline-flex items-center gap-2 border border-white/20 px-3 py-2 text-[0.78rem] font-medium uppercase tracking-[0.12em] text-white/75"
           >
-            <Icon id="theme-icon-sun" name="lucide:sun" class="w-4 h-4 hidden" aria-hidden="true" />
-            <Icon id="theme-icon-moon" name="lucide:moon" class="w-4 h-4" aria-hidden="true" />
+            <Icon id="theme-icon-sun" name="lucide:sun" class="hidden h-4 w-4" aria-hidden="true" />
+            <Icon id="theme-icon-moon" name="lucide:moon" class="h-4 w-4" aria-hidden="true" />
             <span id="theme-label">Tema escuro</span>
           </button>
+        </div>
+        <div class="mt-5 flex flex-col gap-2 text-body-sm text-white/74">
+          <a href={`mailto:${EMAIL}`} class="hover:text-white">{EMAIL}</a>
+          <a href="/politica-de-privacidade" class="hover:text-white">Politica de Privacidade</a>
+          <a href="/termos-de-uso" class="hover:text-white">Termos de Uso</a>
         </div>
       </div>
     </div>
 
-    <div
-      class="mt-12 pt-8 flex flex-col sm:flex-row gap-4 items-center justify-between text-body-sm"
-      style="border-top: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55);"
-    >
-      <p>© 2026 WeShare Escritórios Compartilhados. Todos os direitos reservados.</p>
-      <nav class="flex gap-5" aria-label="Páginas legais">
-        <a href="/politica-de-privacidade" class="link-underline">Política de Privacidade</a>
-        <a href="/termos-de-uso" class="link-underline">Termos de Uso</a>
-      </nav>
+    <div class="mt-10 border-t border-white/12 pt-5 text-[0.72rem] uppercase tracking-[0.14em] text-white/38">
+      2026 WeShare Escritorios Compartilhados. Todos os direitos reservados.
     </div>
   </div>
 </footer>
 
 <script is:inline>
   (function () {
-    var toggle = document.getElementById('theme-toggle');
-    var sun = document.getElementById('theme-icon-sun');
-    var moon = document.getElementById('theme-icon-moon');
-    var label = document.getElementById('theme-label');
+    var toggle = document.getElementById("theme-toggle");
+    var sun = document.getElementById("theme-icon-sun");
+    var moon = document.getElementById("theme-icon-moon");
+    var label = document.getElementById("theme-label");
+
     if (!toggle) return;
 
     function sync() {
-      var isDark = document.documentElement.classList.contains('dark');
-      if (sun) sun.classList.toggle('hidden', !isDark);
-      if (moon) moon.classList.toggle('hidden', isDark);
-      if (label) label.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+      var isDark = document.documentElement.classList.contains("dark");
+      if (sun) sun.classList.toggle("hidden", !isDark);
+      if (moon) moon.classList.toggle("hidden", isDark);
+      if (label) label.textContent = isDark ? "Tema claro" : "Tema escuro";
     }
 
     sync();
 
-    toggle.addEventListener('click', function () {
-      var isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggle.addEventListener("click", function () {
+      var isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
       sync();
     });
   })();
