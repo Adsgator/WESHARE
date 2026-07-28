@@ -8,7 +8,8 @@ const servicos = [
   {
     nome: "Endereço Fiscal e Comercial",
     descricao:
-      "Documentação liberada no mesmo dia para abertura ou transferência de CNPJ, gestão de correspondência inclusa e 20% de desconto nas reservas de sala.",
+      "Documentação liberada no mesmo dia para abertura ou transferência de CNPJ, com gestão de correspondência inclusa.",
+    precoResumo: "R$ 119,90 / mês",
     destaque: "Mais contratado",
     tone: "dark",
   },
@@ -16,18 +17,21 @@ const servicos = [
     nome: "Escritório Privativo",
     descricao:
       "Sala planejada para atender clientes ou trabalhar sozinho com total privacidade, com ambiente climatizado, café expresso, água mineral e impressora colorida inclusos.",
+    precoResumo: "a partir de R$ 50 / hora",
     tone: "light",
   },
   {
     nome: "Sala de Reunião",
     descricao:
       "Espaço para até 7 pessoas com smart TV, flip-chart, iluminação natural e a sobriedade certa para negociações importantes.",
+    precoResumo: "a partir de R$ 80 / hora",
     tone: "light-soft",
   },
   {
     nome: "Escritório Compartilhado",
     descricao:
       "Três estações de trabalho em ambiente climatizado, com café expresso, água mineral, impressora colorida e Wi-Fi de qualidade, tudo incluso na reserva.",
+    precoResumo: "a partir de R$ 90 / diária",
     tone: "light",
   },
 ];
@@ -54,7 +58,7 @@ const servicos = [
             servico.tone === "dark" ? "bg-dark text-white" : "text-text-main",
             servico.tone === "light" ? "bg-surface-alt" : "",
           ]}
-          style={servico.tone === "light-soft" ? "background: color-mix(in srgb, var(--t-surface-alt) 65%, white 35%);" : undefined}
+          style={servico.tone === "light-soft" ? "background: color-mix(in srgb, var(--t-surface-alt) 65%, var(--t-surface) 35%);" : undefined}
           data-animate-item
         >
           <div>
@@ -74,17 +78,28 @@ const servicos = [
             </p>
           </div>
 
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-tracking="click-whatsapp-servico"
-            data-section={servico.nome}
-            class:list={["link-arrow mt-7", servico.tone === "dark" ? "text-white" : "text-text-main"]}
-          >
-            Falar no WhatsApp
-            <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
-          </a>
+          <div class="mt-7">
+            <div class:list={["h-px", servico.tone === "dark" ? "bg-white/15" : "bg-border"]}></div>
+
+            <p class:list={[
+              "mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.13em]",
+              servico.tone === "dark" ? "text-white/80" : "text-primary",
+            ]}>
+              {servico.precoResumo}
+            </p>
+
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tracking="click-whatsapp-servico"
+              data-section={servico.nome}
+              class:list={["link-arrow mt-4", servico.tone === "dark" ? "text-white" : "text-text-main"]}
+            >
+              Falar no WhatsApp
+              <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+            </a>
+          </div>
         </article>
       ))}
     </div>

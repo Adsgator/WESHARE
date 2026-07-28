@@ -1,0 +1,92 @@
+---
+import { Icon } from "astro-icon/components";
+
+const WA_URL =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20endere%C3%A7o%20fiscal.";
+
+const inclusos = [
+  {
+    icon: "lucide:file-check-2",
+    texto: "Documentação liberada no mesmo dia da assinatura do contrato",
+  },
+  {
+    icon: "lucide:building-2",
+    texto: "Endereço para abertura ou transferência do seu CNPJ",
+  },
+  {
+    icon: "lucide:mail",
+    texto: "Gestão e aviso das correspondências recebidas",
+  },
+  {
+    icon: "lucide:badge-check",
+    texto: "Sem prazo de fidelidade, rescisão avisada com 30 dias",
+  },
+  {
+    icon: "lucide:percent",
+    texto: "20% de desconto nas reservas de sala",
+  },
+  {
+    icon: "lucide:map-pinned",
+    texto: "Ed. Madison Tower, sala 706, Jardim Aquarius",
+  },
+];
+---
+
+<section id="endereco-fiscal" class="section-py bg-surface">
+  <div class="container-wide">
+    <div class="max-w-[42rem]">
+      <span class="label-tag mb-5" data-animate>Endereço fiscal e comercial</span>
+      <h2 class="font-serif text-display-lg text-text-main" data-animate>
+        O endereço da sua empresa em um dos pontos mais valorizados de São José dos Campos
+      </h2>
+      <p class="mt-4 max-w-[36rem] text-body-lg text-text-soft" data-animate>
+        Um endereço comercial de verdade no Jardim Aquarius, com espaço físico para receber
+        clientes quando precisar — pelo preço de uma assinatura mensal.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
+      <div class="grid gap-px overflow-hidden border border-border sm:grid-cols-2" data-animate-group>
+        {inclusos.map((item) => (
+          <div class="flex items-start gap-3.5 bg-background px-5 py-5" data-animate-item>
+            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-border text-primary">
+              <Icon name={item.icon} class="h-4.5 w-4.5" />
+            </span>
+            <span class="text-body-md text-text-main">{item.texto}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="border border-dark bg-dark p-7 text-white" data-animate-right>
+        <p class="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+          Plano mensal
+        </p>
+
+        <div class="mt-3 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+          <span class="font-serif text-display-md leading-none text-white">R$ 119,90</span>
+          <span class="text-[0.76rem] font-semibold uppercase tracking-[0.14em] text-white/60">
+            por mês
+          </span>
+        </div>
+
+        <div class="mt-6 h-px bg-white/15"></div>
+
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracking="click-whatsapp-endereco-fiscal"
+          data-section="endereco-fiscal"
+          class="btn-primary mt-6 w-full"
+        >
+          <Icon name="lucide:message-circle" class="h-4 w-4" />
+          Quero contratar
+        </a>
+
+        <p class="mt-4 text-[0.78rem] leading-5 text-white/60">
+          Tire suas dúvidas pelo WhatsApp, sem compromisso.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

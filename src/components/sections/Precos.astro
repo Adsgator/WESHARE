@@ -4,11 +4,13 @@ import { Icon } from "astro-icon/components";
 const WA_URL =
   "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
 
+const WA_URL_PLANO =
+  "https://wa.me/5512982710971?text=Ol%C3%A1!%20Quero%20montar%20um%20plano%20sob%20medida.";
+
 const planos = [
   {
     nome: "Endereço Fiscal e Comercial",
-    preco: "R$ 119,90",
-    periodo: "por mês",
+    precos: [{ valor: "R$ 119,90", unidade: "por mês" }],
     descricao:
       "Documentação imediata para abertura ou transferência de CNPJ, gestão de correspondência inclusa e 20% de desconto em reservas de sala.",
     faixa: "Plano principal",
@@ -16,8 +18,11 @@ const planos = [
   },
   {
     nome: "Escritório Privativo",
-    preco: "Sob consulta",
-    periodo: "por reserva",
+    precos: [
+      { valor: "R$ 50", unidade: "hora" },
+      { valor: "R$ 180", unidade: "diária" },
+      { valor: "R$ 2.200", unidade: "mês" },
+    ],
     descricao:
       "Sala reservada para atendimento individual, foco e reuniões privadas, com café expresso, água mineral e impressora colorida inclusos.",
     faixa: "Atendimento privativo",
@@ -25,8 +30,11 @@ const planos = [
   },
   {
     nome: "Sala de Reunião",
-    preco: "Sob consulta",
-    periodo: "por reserva",
+    precos: [
+      { valor: "R$ 80", unidade: "hora" },
+      { valor: "R$ 280", unidade: "diária livre" },
+      { valor: "R$ 3.300", unidade: "mês" },
+    ],
     descricao:
       "Espaço para até 7 pessoas com smart TV, flip-chart, iluminação natural e o acabamento certo para negociações importantes.",
     faixa: "Reuniões e apresentações",
@@ -34,8 +42,10 @@ const planos = [
   },
   {
     nome: "Escritório Compartilhado",
-    preco: "Sob consulta",
-    periodo: "por reserva",
+    precos: [
+      { valor: "R$ 90", unidade: "diária" },
+      { valor: "R$ 750", unidade: "mês" },
+    ],
     descricao:
       "Três estações de trabalho em ambiente climatizado, com infraestrutura pronta para quem precisa produzir sem custo fixo alto.",
     faixa: "Uso flexível",
@@ -66,26 +76,47 @@ const planos = [
           ]}
           style={
             plano.tone === "light-soft"
-              ? "background: color-mix(in srgb, var(--t-surface-alt) 70%, white 30%);"
+              ? "background: color-mix(in srgb, var(--t-surface-alt) 70%, var(--t-surface) 30%);"
               : plano.tone === "light-dark"
-                ? "background: color-mix(in srgb, var(--t-dark) 14%, white 86%);"
+                ? "background: color-mix(in srgb, var(--t-dark) 14%, var(--t-surface) 86%);"
                 : undefined
           }
           data-animate-item
         >
-          <div class="grid gap-4 px-5 py-6 lg:grid-cols-[13.5rem_1px_minmax(0,1fr)_auto] lg:items-center lg:gap-5 lg:px-7">
+          <div class="grid gap-4 px-5 py-6 lg:grid-cols-[19rem_1px_minmax(0,1fr)_auto] lg:items-center lg:gap-5 lg:px-7">
             <div>
               <p class:list={["text-[0.72rem] font-semibold uppercase tracking-[0.16em]", plano.tone === "dark" ? "text-white/70" : "text-primary"]}>
                 {plano.nome}
               </p>
-              <div class="mt-3">
-                <p class:list={["font-serif text-display-md", plano.tone === "dark" ? "text-white" : "text-text-main"]}>
-                  {plano.preco}
-                </p>
-                <p class:list={["mt-1 text-[0.78rem] font-medium uppercase tracking-[0.14em]", plano.tone === "dark" ? "text-white/55" : "text-text-muted"]}>
-                  {plano.periodo}
-                </p>
-              </div>
+
+              {plano.precos.length === 1 ? (
+                plano.precos.map((preco) => (
+                  <div class="mt-3">
+                    <p class:list={["font-serif text-display-md", plano.tone === "dark" ? "text-white" : "text-text-main"]}>
+                      {preco.valor}
+                    </p>
+                    <p class:list={["mt-1 text-[0.78rem] font-medium uppercase tracking-[0.14em]", plano.tone === "dark" ? "text-white/55" : "text-text-muted"]}>
+                      {preco.unidade}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {plano.precos.map((preco) => (
+                    <div class:list={[
+                      "border px-3 py-2",
+                      plano.tone === "dark" ? "border-white/18 bg-white/8" : "border-border bg-background",
+                    ]}>
+                      <p class:list={["font-serif text-[1.15rem] leading-none", plano.tone === "dark" ? "text-white" : "text-text-main"]}>
+                        {preco.valor}
+                      </p>
+                      <p class:list={["mt-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.13em]", plano.tone === "dark" ? "text-white/55" : "text-text-muted"]}>
+                        {preco.unidade}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div class:list={["hidden h-full lg:block", plano.tone === "dark" ? "bg-white/15" : "bg-border"]}></div>
@@ -116,6 +147,36 @@ const planos = [
           </div>
         </article>
       ))}
+
+      <div class="flex flex-col gap-5 border border-border bg-surface-alt px-5 py-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:px-7" data-animate-item>
+        <div>
+          <span class="label-tag mb-3">Plano sob medida</span>
+          <h3 class="font-serif text-display-sm text-text-main">
+            Usa o espaço toda semana? O valor da diária cai.
+          </h3>
+          <p class="mt-2.5 max-w-[38rem] text-body-md text-text-soft">
+            Montamos um plano com a frequência que você precisa — 1x, 2x ou 3x por semana.
+            Quanto maior a recorrência, menor o valor da diária. Os planos mensais dão uso
+            exclusivo do espaço, 24 horas por dia, 7 dias por semana.
+          </p>
+        </div>
+
+        <a
+          href={WA_URL_PLANO}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-tracking="click-whatsapp-plano-sob-medida"
+          data-section="plano-sob-medida"
+          class="btn-primary flex-shrink-0"
+        >
+          <Icon name="lucide:message-circle" class="h-4 w-4" />
+          Montar meu plano
+        </a>
+      </div>
     </div>
+
+    <p class="mt-5 text-body-sm text-text-muted" data-animate>
+      Valores de referência. Confirme a disponibilidade da data pelo WhatsApp.
+    </p>
   </div>
 </section>

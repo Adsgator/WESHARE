@@ -232,38 +232,22 @@
   .media-placeholder::before {
     content: "";
     @apply absolute inset-0;
-    background-image:
-      var(--placeholder-image, none),
+    background-image: var(--placeholder-image, none),
       linear-gradient(
         135deg,
         color-mix(in srgb, var(--color-primary) 10%, transparent) 0%,
         transparent 42%,
         color-mix(in srgb, var(--color-dark) 4%, transparent) 100%
       ),
-      linear-gradient(
-        color-mix(in srgb, var(--color-border) 55%, transparent) 1px,
-        transparent 1px
-      ),
+      linear-gradient(color-mix(in srgb, var(--color-border) 55%, transparent) 1px, transparent 1px),
       linear-gradient(
         90deg,
         color-mix(in srgb, var(--color-border) 55%, transparent) 1px,
         transparent 1px
       );
-    background-position:
-      center,
-      center,
-      center,
-      center;
-    background-repeat:
-      no-repeat,
-      no-repeat,
-      repeat,
-      repeat;
-    background-size:
-      cover,
-      auto,
-      2.8rem 2.8rem,
-      2.8rem 2.8rem;
+    background-position: center, center, center, center;
+    background-repeat: no-repeat, no-repeat, repeat, repeat;
+    background-size: cover, auto, 2.8rem 2.8rem, 2.8rem 2.8rem;
   }
 
   .media-placeholder__body {

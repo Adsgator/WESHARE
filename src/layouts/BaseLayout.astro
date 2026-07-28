@@ -20,10 +20,10 @@ interface Props {
 const SITE_URL = "https://wesharescritorios.com.br";
 
 const {
-  title = "WeShare Escritórios Compartilhados | Endereço Fiscal e Coworking no Jardim Aquárius - SJC",
-  description = "Endereço fiscal e comercial de prestígio no Jardim Aquárius, São José dos Campos, por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade. Escritórios privativos e salas de reunião para reservar pelo WhatsApp.",
-  keywords = "endereço fiscal São José dos Campos, escritório compartilhado, coworking Jardim Aquárius, sala de reunião SJC, escritório privativo, endereço comercial CNPJ",
-  ogTitle = "WeShare Escritórios Compartilhados | Jardim Aquárius - São José dos Campos",
+  title = "WeShare Escritórios Compartilhados | Endereço Fiscal e Coworking no Jardim Aquarius - SJC",
+  description = "Endereço fiscal e comercial de prestígio no Jardim Aquarius, São José dos Campos, por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade. Escritórios privativos e salas de reunião para reservar pelo WhatsApp.",
+  keywords = "endereço fiscal São José dos Campos, escritório compartilhado, coworking Jardim Aquarius, sala de reunião SJC, escritório privativo, endereço comercial CNPJ",
+  ogTitle = "WeShare Escritórios Compartilhados | Jardim Aquarius - São José dos Campos",
   ogDescription = "Seu CNPJ com endereço de prestígio por R$ 119,90/mês. Documentação no mesmo dia, sem fidelidade e com gestão de correspondência inclusa.",
   canonical = SITE_URL,
   noindex = false,
@@ -38,7 +38,7 @@ const defaultSchema = {
   "@type": "LocalBusiness",
   name: "WeShare Escritórios Compartilhados",
   description:
-    "Endereço fiscal e comercial, escritórios privativos, salas de reunião e estações compartilhadas no Jardim Aquárius, São José dos Campos.",
+    "Endereço fiscal e comercial, escritórios privativos, salas de reunião e estações compartilhadas no Jardim Aquarius, São José dos Campos.",
   url: SITE_URL,
   telephone: "+55-12-98271-0971",
   email: "contato@wesharescritorios.com.br",
@@ -46,7 +46,7 @@ const defaultSchema = {
   address: {
     "@type": "PostalAddress",
     streetAddress:
-      "Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Madison Tower, Sala 706, Jardim Aquárius",
+      "Av. Alfredo Ignácio Nogueira Penido, 335, Ed. Madison Tower, Sala 706, Jardim Aquarius",
     addressLocality: "São José dos Campos",
     addressRegion: "SP",
     postalCode: "12246-000",
@@ -62,6 +62,40 @@ const defaultSchema = {
     "@type": "AggregateRating",
     ratingValue: "5",
     reviewCount: "54",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Serviços WeShare",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Endereço Fiscal e Comercial",
+        price: "119.90",
+        priceCurrency: "BRL",
+        unitCode: "MON",
+      },
+      {
+        "@type": "Offer",
+        name: "Escritório Privativo",
+        price: "50.00",
+        priceCurrency: "BRL",
+        unitCode: "HUR",
+      },
+      {
+        "@type": "Offer",
+        name: "Sala de Reunião",
+        price: "80.00",
+        priceCurrency: "BRL",
+        unitCode: "HUR",
+      },
+      {
+        "@type": "Offer",
+        name: "Escritório Compartilhado",
+        price: "90.00",
+        priceCurrency: "BRL",
+        unitCode: "DAY",
+      },
+    ],
   },
   sameAs: ["https://www.instagram.com/wesharescritorios"],
 };
@@ -103,13 +137,20 @@ const finalSchema = schema || defaultSchema;
   <meta property="og:title" content={ogTitle} />
   <meta property="og:description" content={ogDescription} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={`${SITE_URL}/og-image.svg`} />
+  <meta property="og:image" content={`${SITE_URL}/og-image.jpg`} />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta
+    property="og:image:alt"
+    content="WeShare Escritórios Compartilhados - endereço fiscal no Jardim Aquarius por R$ 119,90 por mês"
+  />
   <meta property="og:locale" content="pt_BR" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={ogTitle} />
   <meta name="twitter:description" content={ogDescription} />
-  <meta name="twitter:image" content={`${SITE_URL}/og-image.svg`} />
+  <meta name="twitter:image" content={`${SITE_URL}/og-image.jpg`} />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 

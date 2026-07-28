@@ -6,6 +6,7 @@ const WA_URL =
   "https://wa.me/5512982710971?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20saber%20mais.";
 
 const navItems = [
+  { label: "Endereço fiscal", href: "#endereco-fiscal" },
   { label: "Serviços", href: "#servicos" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Preços", href: "#precos" },
@@ -24,7 +25,7 @@ const navItems = [
         <Image src={logoVerde} alt="WeShare Escritórios Compartilhados" class="h-9 w-auto" width={160} height={36} />
       </a>
 
-      <nav class="hidden items-center gap-6 lg:flex" aria-label="Navegação principal">
+      <nav class="hidden items-center gap-5 lg:flex" aria-label="Navegação principal">
         {navItems.map((item) => (
           <a
             href={item.href}
